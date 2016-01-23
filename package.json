@@ -1,0 +1,29 @@
+{
+    "author": {
+        "name": "Jiri Pihik"
+    },
+    "name": "cform",
+    "displayName": "CloudFormation",
+    "description": "VS Code Plugin for CloudFormation",
+    "version": "0.0.1",
+    "publisher": "aws-scripting-guy",
+    "icon": "images/ManagementTools_CloudFormation.svg",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aws-scripting-guy/cformVSCode.git"
+    },
+    "engines": {
+        "vscode": "^0.10.1"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "JSON",
+                "path": "./snippets/snippets.json"
+            }
+        ]
+    }
+}
