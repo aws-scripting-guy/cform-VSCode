@@ -16,6 +16,8 @@ Usage
 
 > **Note:**Syntax have to be set to JavaScript for now. I will try to manage file extension in next release.
 
+![New template file](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/new_template_file.gif)
+
 Installation
 -------------------
 
