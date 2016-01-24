@@ -26,7 +26,7 @@ Installation
  3. Invoke command palette by ```Ctrl-Shift-P``` (Windows, Linux) or ```Cmd-Shift-P``` (OSX)
  4. **Type** ```Extension```
  4. **Select** ```Install Extension```
- 5. Choose the extension
- 6. Reload Visual Studio Code
+ 5. **Choose** extension **CloudFormation**
+ 6. Restart Visual Studio Code
 
-
+![Installation](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/install_extension.gif)
