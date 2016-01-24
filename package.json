@@ -19,6 +19,13 @@
         "Snippets"
     ],
     "contributes": {
+        "languages": [
+            {
+                "id": "json",
+                "aliases": [],
+                "extensions": [".cform","template"]
+            }
+        ],
         "snippets": [
             {
                 "language": "json",

@@ -30,3 +30,8 @@ Installation
  6. Restart Visual Studio Code
 
 ![Installation](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/install_extension.gif)
+
+Changelog
+-------------------
+0.0.6
+* added support for .cform and .template file extensions
