@@ -5,7 +5,7 @@
     "name": "cform",
     "displayName": "CloudFormation",
     "description": "VS Code Plugin for CloudFormation",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "publisher": "aws-scripting-guy",
     "icon": "images/ManagementTools_CloudFormation.svg",
     "repository": {
