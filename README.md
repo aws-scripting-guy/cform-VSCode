@@ -9,12 +9,12 @@ Usage
 
  1. Install the extension
  2. Create **new file**
- 3. Set syntax to **JavaScript**
+ 3. Set syntax to **JSON**
  4. Type **start** and press ```tab``` key to populate basic template skeleton
  5. **Start typing** desired **resource name** and hit ```tab``` key
 
 
-> **Note:**Syntax have to be set to JavaScript for now. I will try to manage file extension in next release.
+> **Note:**CloudFormation support works with JSON syntax selected or .json file extension. I will try to manage more file extensions in next release.
 
 ![New template file](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/new_template_file.gif)
 
