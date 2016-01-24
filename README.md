@@ -14,7 +14,7 @@ Usage
  5. **Start typing** desired **resource name** and hit ```tab``` key
 
 
-> **Note:**CloudFormation support works with JSON syntax selected or .json file extension. I will try to manage more file extensions in next release.
+> **Note:** CloudFormation support works with JSON syntax selected or .json, .cform, .template file extensions. These are commonly used CloudFormation template extensions.
 
 ![New template file](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/new_template_file.gif)
 
