@@ -44,5 +44,6 @@ Changelog
 0.0.8
 * corrected issue with missing language mode UI
 * added latest .vsix to GitHub repo for manual install
+
 0.0.6
 * added support for .cform and .template file extensions
