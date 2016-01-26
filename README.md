@@ -35,8 +35,8 @@ Troubleshooting
 -------------------
 
 * Users behing proxy: 
-Download latest **.vsix** file from GitHub repo for manual install
-![cform-VSCode GitHub repo](https://github.com/aws-scripting-guy/cform-VSCode)
+Download  **cform-latest.vsix** file from GitHub repo for manual install
+[https://github.com/aws-scripting-guy/cform-VSCode](https://github.com/aws-scripting-guy/cform-VSCode)
 
 Changelog
 -------------------
