@@ -31,7 +31,18 @@ Installation
 
 ![Installation](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/install_extension.gif)
 
+Troubleshooting
+-------------------
+
+* Users behing proxy: 
+Download latest **.vsix** file from GitHub repo for manual install
+![cform-VSCode GitHub repo](https://github.com/aws-scripting-guy/cform-VSCode)
+
 Changelog
 -------------------
+
+0.0.8
+* corrected issue with missing language mode UI
+* added latest .vsix to GitHub repo for manual install
 0.0.6
 * added support for .cform and .template file extensions
