@@ -227,6 +227,20 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"if": {
+		"prefix": "if",
+		"body": [
+			"",
+			"{\"Fn::If\":[",
+			"	${1:condition_name},",
+			"	${2:value_if_true},", 
+			"	${3:value_if_false}",
+			"	]",
+			"}"
+		],
+		"description": "Intrinsic Function - If",
+		"scope": "source.cloudformation"
+	},
 	"internet-gateway": {
 		"prefix": "internet-gateway",
 		"body": "\r\n\"${1:igwName}\": {\r\n  \"Type\": \"AWS::EC2::InternetGateway\",\r\n  \"Properties\": {\r\n    \"Tags\": [${2:\"-\"}]\r\n  }\r\n},\r\n\"AttachGateway\": {\r\n  \"Type\": \"AWS::EC2::VPCGatewayAttachment\",\r\n  \"Properties\": {\r\n    \"VpcId\": ${3:\"--\"},\r\n    \"InternetGatewayId\": { \"Ref\": \"${4:igwName}\" }\r\n  }\r\n}\r\n",
@@ -643,7 +657,7 @@
 	},
 	"start": {
 		"prefix": "start",
-		"body": "\r\n{\r\n    \"AWSTemplateFormatVersion\": \"2010-09-09\",\r\n    \"Description\": \"${1}\",\r\n    \"Metadata\": {\r\n\r\n    },\r\n    \"Parameters\": {\r\n    \r\n    },\r\n    \"Mappings\": {\r\n\r\n    },\r\n    \"Conditions\": {\r\n\r\n    },\r\n    \"Resources\": {\r\n\r\n    },\r\n    \"Outputs\": {\r\n\r\n    }\r\n}\r\n    \r\n",
+		"body": "{\r\n\"AWSTemplateFormatVersion\": \"2010-09-09\",\r\n    \"Description\": \"${1}\",\r\n    \"Metadata\": {\r\n\r\n    },\r\n    \"Parameters\": {\r\n    \r\n    },\r\n    \"Mappings\": {\r\n\r\n    },\r\n    \"Conditions\": {\r\n\r\n    },\r\n    \"Resources\": {\r\n\r\n    },\r\n    \"Outputs\": {\r\n\r\n    }\r\n}",
 		"description": "",
 		"scope": "source.cloudformation"
 	},
