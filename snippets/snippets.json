@@ -259,30 +259,30 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
-    "lambda-alias": {
-        "prefix": "lambda-alias",
-        "body": "\r\n\"${1:lambdaAlias}\": {\r\n  \"Type\": \"AWS::Lambda::Alias\",\r\n  \"Properties\": {\r\n    \"FunctionName\": \"${2}\",\r\n    \"FunctionVersion\": \"${3}\",\r\n    \"Name\": \"${4}\",\r\n    \"Description\": \"${5}\"\r\n  }\r\n}\r\n",
-        "description": "",
-        "scope": "source.cloudformation"
-    },
-    "lambda-function": {
-        "prefix": "lambda-function",
-        "body": "\r\n\"${1:lambdaFunction}\": {\r\n  \"Type\": \"AWS::Lambda::Function\",\r\n  \"Properties\": {\r\n    \"Code\": {\r\n      \"S3Bucket\": \"${2}\",\r\n      \"S3Key\": \"${3}\",\r\n      \"S3ObjectVersion\": \"${4}\",\r\n      \"ZipFile\": \"${5}\"\r\n    },\r\n    \"Handler\": \"${6}\",\r\n    \"Role\": \"${7}\",\r\n    \"Runtime\": \"${8}\",\r\n    \"FunctionName\": \"${9}\",\r\n    \"MemorySize\": ${10:128},\r\n    \"Timeout\": ${11:5},\r\n    \"KmsKeyArn\": \"${12}\",\r\n    \"Environment\": {\r\n      \"Variables\": {\r\n        \"\":\"\",\r\n        \"\":\"\"\r\n      }\r\n    },\r\n    \"VpcConfig\": {\r\n      \"SecurityGroupIds\": [ ],\r\n      \"SubnetIds\": [ ]\r\n    },\r\n    \"Description\": \"${13}\"\r\n  }\r\n}\r\n",
-        "description": "",
-        "scope": "source.cloudformation"
-    },
-    "lambda-permission": {
-        "prefix": "lambda-permission",
-        "body": "\r\n\"${1:lambdaPermission}\": {\r\n  \"Type\": \"AWS::Lambda::Permission\",\r\n  \"Properties\": {\r\n    \"Action\": \"${2}\",\r\n    \"FunctionName\": \"${3}\",\r\n    \"Principal\": \"${4}\",\r\n    \"SourceAccount\": \"${5}\",\r\n    \"SourceArn\": \"${6}\"\r\n  }\r\n}\r\n",
-        "description": "",
-        "scope": "source.cloudformation"
-    },
-    "lambda-version": {
-        "prefix": "lambda-version",
-        "body": "\r\n\"${1:lambdaVersion}\": {\r\n  \"Type\": \"AWS::Lambda::Version\",\r\n  \"Properties\": {\r\n    \"CodeSha256\": \"${2}\",\r\n    \"Description\": \"${3}\",\r\n    \"FunctionName\": \"${4}\"\r\n  }\r\n}\r\n",
-        "description": "",
-        "scope": "source.cloudformation"
-    },
+	"lambda-alias": {
+		"prefix": "lambda-alias",
+		"body": "\r\n\"${1:lambdaAlias}\": {\r\n  \"Type\": \"AWS::Lambda::Alias\",\r\n  \"Properties\": {\r\n    \"FunctionName\": \"${2}\",\r\n    \"FunctionVersion\": \"${3}\",\r\n    \"Name\": \"${4}\",\r\n    \"Description\": \"${5}\"\r\n  }\r\n}\r\n",
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"lambda-function": {
+		"prefix": "lambda-function",
+		"body": "\r\n\"${1:lambdaFunction}\": {\r\n  \"Type\": \"AWS::Lambda::Function\",\r\n  \"Properties\": {\r\n    \"Code\": {\r\n      \"S3Bucket\": \"${2}\",\r\n      \"S3Key\": \"${3}\",\r\n      \"S3ObjectVersion\": \"${4}\",\r\n      \"ZipFile\": \"${5}\"\r\n    },\r\n    \"Handler\": \"${6}\",\r\n    \"Role\": \"${7}\",\r\n    \"Runtime\": \"${8}\",\r\n    \"FunctionName\": \"${9}\",\r\n    \"MemorySize\": ${10:128},\r\n    \"Timeout\": ${11:5},\r\n    \"KmsKeyArn\": \"${12}\",\r\n    \"Environment\": {\r\n      \"Variables\": {\r\n        \"\":\"\",\r\n        \"\":\"\"\r\n      }\r\n    },\r\n    \"VpcConfig\": {\r\n      \"SecurityGroupIds\": [ ],\r\n      \"SubnetIds\": [ ]\r\n    },\r\n    \"Description\": \"${13}\"\r\n  }\r\n}\r\n",
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"lambda-permission": {
+		"prefix": "lambda-permission",
+		"body": "\r\n\"${1:lambdaPermission}\": {\r\n  \"Type\": \"AWS::Lambda::Permission\",\r\n  \"Properties\": {\r\n    \"Action\": \"${2}\",\r\n    \"FunctionName\": \"${3}\",\r\n    \"Principal\": \"${4}\",\r\n    \"SourceAccount\": \"${5}\",\r\n    \"SourceArn\": \"${6}\"\r\n  }\r\n}\r\n",
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"lambda-version": {
+		"prefix": "lambda-version",
+		"body": "\r\n\"${1:lambdaVersion}\": {\r\n  \"Type\": \"AWS::Lambda::Version\",\r\n  \"Properties\": {\r\n    \"CodeSha256\": \"${2}\",\r\n    \"Description\": \"${3}\",\r\n    \"FunctionName\": \"${4}\"\r\n  }\r\n}\r\n",
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"launch-config": {
 		"prefix": "launch-config",
 		"body": "\r\n\"${1:launchConfigName}\": {\r\n    \"Type\" : \"AWS::AutoScaling::LaunchConfiguration\",\r\n    \"Properties\" : {\r\n        \"IamInstanceProfile\" : ${2:\"--\"},\r\n        \"ImageId\" : ${3:\"--\"},\r\n        \"InstanceMonitoring\" : ${4:\"--\"},\r\n        \"InstanceType\" : \"${5:--}\",\r\n        \"KeyName\" : ${6:\"--\"},\r\n        \"SecurityGroups\" : [ ${7:\"--\"} ],\r\n        \"UserData\" : {\r\n            \"Fn::Base64\": \r\n                {   \"Fn::Join\": [\r\n                        \"\",\r\n                        [\r\n                            \"#!/bin/bash -ex\",\r\n                            \"${8:-}\"\r\n                        ]\r\n                    \r\n                    ]                 \r\n                }\r\n        }\r\n    }\r\n}\r\n",

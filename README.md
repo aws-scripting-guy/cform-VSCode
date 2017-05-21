@@ -41,6 +41,11 @@ Download  **cform-latest.vsix** file from GitHub repo for manual install
 Changelog
 -------------------
 
+0.0.10
+* start snippet correction
+* lambda support
+* function IF
+
 0.0.8
 * corrected issue with missing language mode UI
 * added latest .vsix to GitHub repo for manual install
