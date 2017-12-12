@@ -71,6 +71,12 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"codecommit-repository": {
+		"prefix": "codecommit-repository",
+		"body": "\r\n\"${1:cloudWatchAlarm}\": {\r\n   \"Type\": \"AWS::CodeCommit::Repository\",\r\n   \"Properties\": {\r\n      \"RepositoryDescription\": \"${2}\",\r\n      \"RepositoryName\": \"${3}\",\r\n      \"Triggers\": [ \"${4}\" ],\r\n,
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"dynamodb-table": {
 		"prefix": "dynamodb-table",
 		"body": "\r\n\"${1:dynamodbTable}\": {\r\n   \"Type\": \"AWS::DynamoDB::Table\",\r\n   \"Properties\": {\r\n      \"AttributeDefinitions\": [ ${2} ],\r\n      \"GlobalSecondaryIndexes\": [ ${3} ],\r\n      \"KeySchema\": [ ${4} ],\r\n      \"LocalSecondaryIndexes\": [ ${5} ],\r\n      \"ProvisionedThroughput\": { ${6} },\r\n      \"TableName\": \"${7}\"\r\n   }\r\n}\r\n",
