@@ -684,5 +684,22 @@
 		"body": "\r\n\"${1:vgwName}\": {\r\n  \"Type\": \"AWS::EC2::VPNGateway\",\r\n  \"Properties\": {\r\n    \"Type\": \"ipsec.1\",\r\n    \"Tags\": [${2:\"--\"}]\r\n  }\r\n},\r\n\"AttachVpnGateway\": {\r\n  \"Type\": \"AWS::EC2::VPCGatewayAttachment\",\r\n  \"Properties\": {\r\n    \"VpcId\": ${3:\"--\"},\r\n    \"VpnGatewayId\": { \"Ref\": \"${4:vgwName}\" }\r\n  }\r\n}\r\n",
 		"description": "",
 		"scope": "source.cloudformation"
+	},
+	"code-pipeline": {
+		"prefix": "code-pipeline",
+		"body": "\r\n\"${1:codepipeline}\": {\r\n  \"Type\" : \"AWS::CodePipeline::Pipeline\",\r\n  \"Properties\" : {\r\n        \"ArtifactStore\": {\r\n          \"Type\": \"S3\",\r\n          \"Location\": { \"Ref\" : \"s3Bucket\" }\r\n        },\r\n    \"DisableInboundStageTransitions\" : [ ],\r\n    \"Name\" : \"${3:name}\",\r\n    \"RestartExecutionOnUpdate\" : ${4:true | false},\r\n    \"RoleArn\" : \"${roleArn}\",\r\n    \"Stages\" : [ ]\r\n  }\r\n}",		"description": "",
+		"scope": "json"
+	},
+	"code-pipeline-stage": {
+		"prefix": "code-pipeline-stage",
+		"body": "{\r\n    \"Name\": \"${1:Source}\",\r\n    \"Actions\": [\r\n     ]\r\n}",
+		"description": "",
+		"scope": "json"
+	},
+	"code-pipeline-action": {
+		"prefix": "code-pipeline-action",
+		"body": "{\r\n  \"ActionTypeId\" : {\r\n    \"Category\": \"${1:Source | Build | Deploy | Test | Invoke | Approval}\",\r\n    \"Owner\": \"${2:AWS | ThirdParty | Custom}\",\r\n    \"Version\": \"1\",\r\n    \"Provider\": \"${3:S3|CodeCommit|GitHub|CloudFormation|CodeBuild|CodeDeploy|ElasticBeanstalk|Lambda|ECS|jenkinsProviderName}\"\r\n  },\r\n  \"Configuration\" : { \"key\" : \"value\" },\r\n  \"InputArtifacts\" : [ ],\r\n  \"Name\" : \"${4:actionName}\",\r\n  \"OutputArtifacts\" : [ ],\r\n  \"RoleArn\" : \"\",\r\n  \"RunOrder\" : ${5:1|2|3|4}\r\n}",
+		"description": "",
+		"scope": "json"
 	}
 }
