@@ -44,6 +44,14 @@ Troubleshooting
 Download  **cform-latest.vsix** file from GitHub repo for manual install
 [https://github.com/aws-scripting-guy/cform-VSCode](https://github.com/aws-scripting-guy/cform-VSCode)
 
+Known issues
+-------------------
+
+When working with YAML documents, your current YAML language interpreter might not support syntax of AWS intrinsic functions, thus marking them as *unknown tag*. 
+This however has no effect on validity of the YAML document. 
+
+![YAML known issue](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/known_issue1.png)
+
 Changelog
 -------------------
 
