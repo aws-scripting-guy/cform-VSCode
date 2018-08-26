@@ -1,4 +1,171 @@
 {
+	"autoscaling-group-vpc": {
+		"prefix": "autoscaling-group-vpc",
+		"body": [
+			"${1:myAutoscalingGroup}: ",
+			"  Type: AWS::AutoScaling::AutoScalingGroup",
+			"  Properties:",
+			"    AutoScalingGroupName: ${2:asg}",
+			"    AvailabilityZones: !GetAZs ''",
+			"    LaunchConfigurationName: ${3:!Ref LaunchConfig}",
+			"    LoadBalancerNames:",
+			"      - !Ref ElasticLoadBalancer",
+			"    MaxSize: ${4:0}",
+			"    MinSize: ${5:0}",
+			"    VPCZoneIdentifier: ",
+			"      - ${6:vpc-id}",
+			"    Tags: ",
+			"      - Key: ${7:keyname}",
+			"        Value: ${8:value}",
+			"        PropagateAtLaunch: 'true'"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"autoscaling-group": {
+		"prefix": "autoscaling-group",
+		"body": [
+			"${1:asg}:",
+			"  Type: AWS::AutoScaling::AutoScalingGroup",
+			"  Properties:",
+			"    AvailabilityZones: !GetAZs ''",
+			"    LaunchConfigurationName: ",
+			"    MaxSize: 0",
+			"    MinSize: 0",
+			"    Tags:",
+			"      - Key: keyname",
+			"        Value: value",
+			"        PropagateAtLaunch: True|False"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"cloudwatch-alarm": {
+		"prefix": "cloudwatch-alarm",
+		"body": [
+			"${1:cloudWatchAlarm}:",
+			"  Type: AWS::CloudWatch::Alarm",
+			"  Properties:",
+			"    MetricName: ${2}",
+			"    Namespace: ${3}",
+			"    ComparisonOperator: ${4}",
+			"    EvaluationPeriods: ${5}",
+			"    Period: ${6}",
+			"    Statistic: ${7}",
+			"    Threshold: ${8}",
+			"    ActionsEnabled: ${9:true|false}",
+			"    AlarmActions: ${9}",
+			"    AlarmDescription: ${10}",
+			"    AlarmName: ${11}",
+			"    Dimensions: ${12}",
+			"    InsufficientDataActions: ${13}",
+			"    OKActions: ${14}",
+			"    Unit: ${15}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"ec2-instance": {
+		"prefix": "ec2-instance",
+		"body": [
+			"${1:myEC2Instance}:",
+			"  Type: AWS::EC2::Instance",
+			"  Properties:",
+			"    KeyName: ${2}",
+			"    DisableApiTermination: ${3}",
+			"    ImageId: ${4}",
+			"    InstanceType: ${5}",
+			"    Monitoring: ${6:true|false}",
+			"    SecurityGroupIds:",
+			"      - ${7:sg-id}",
+			"    Userdata: !Base64 |",
+			"      #!/bin/bash -ex",
+			"      # put your script here",
+			"    Tags:",
+			"      - Key: ${8:key}",
+			"        Value: ${9:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"elastic-load-balancer-vpc-internal": {
+		"prefix": "elastic-load-balancer-vpc-internal",
+		"body": [
+			"${1:myELBname}:",
+			"  Type: AWS::ElasticLoadBalancing::LoadBalancer",
+			"  Properties:",
+			"    Scheme: internal",
+			"    SecurityGroups:",
+			"      - ${2:sg-id}",
+			"    Subnets:",
+			"      - ${3:subnet-id}",
+			"    Instances:",
+			"      - ${4:instance-id}",
+			"    Listeners:",
+			"      - LoadBalancerPort: ${5}",
+			"        InstancePort: ${6}",
+			"        Protocol: ${7:HTTP|HTTPS|TCP|SSL}",
+			"        InstanceProtocol: ${8:HTTP|HTTPS|TCP|SSL}",
+			"      - LoadBalancerPort: ${9:'443'}",
+			"        InstancePort: ${10:'443'}",
+			"        Protocol: ${11:HTTPS}",
+			"        InstanceProtocol: ${12:HTTPS}",
+			"        SSLCertificateId: ${13}",
+			"    HealthCheck:",
+			"      Target: TCP:port or HTTPS|HTTP:port/PathToPing",
+			"      HealthyThreshold: ${14}",
+			"      Interval: ${15}",
+			"      Timeout: ${16}",
+			"      UnhealthyThreshold: ${17}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"rds-dbinstance": {
+		"prefix": "rds-dbinstance",
+		"body": [
+			"${1:rdsDBInstance}:",
+			"  Type: AWS::RDS::DBInstance",
+			"  Properties:",
+			"    AllocatedStorage: ${2}",
+			"    DBInstanceClass: ${3}",
+			"    AllowMajorVersionUpgrade: ${4:true|false}",
+			"    AutoMinorVersionUpgrade: ${5:true|false}",
+			"    AvailabilityZone: ${6}",
+			"    BackupRetentionPeriod: ${7}",
+			"    CharacterSetName: ${8}",
+			"    DBInstanceIdentifier: ${9}",
+			"    DBName: ${10}",
+			"    DBParameterGroupName: ${11}",
+			"    DBSecurityGroups: ",
+			"      - ${12:db-sg-group}",
+			"    DBSnapshotIdentifier: ${13}",
+			"    DBSubnetGroupName: ${14}",
+			"    Engine: ${15:mysql|oracle}",
+			"    EngineVersion: ${16}",
+			"    Iops: ${17}",
+			"    KmsKeyId: ${18}",
+			"    LicenseModel: ${19}",
+			"    MasterUsername: ${20}",
+			"    MasterUserPassword: ${21}",
+			"    MultiAZ: ${22:true|false}",
+			"    OptionGroupName: ${23}",
+			"    Port: ${24}",
+			"    PreferredBackupWindow: ${25}",
+			"    PreferredMaintenanceWindow: ${26}",
+			"    PubliclyAccessible: ${27:true|false}",
+			"    SourceDBInstanceIdentifier: ${28}",
+			"    StorageEncrypted: ${29:true|false}",
+			"    StorageType: ${30}",
+			"    VPCSecurityGroups:",
+			"      - ${31:vpc-sg-id}",
+			"    Tags:",
+			"      - Key: ${32:keyname}",
+			"        Value: ${33:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"start": {
 		"prefix": "start",
 		"body": [
@@ -17,29 +184,155 @@
 			"Outputs:"
 		]
 	},
+	"find-in-map": {
+		"prefix": "find-in-map",
+		"body": [
+			"!FindInMap [ MappingName, keyname, value ]"
+		],
+		"description": "!FindInMap [ MappingName, keyname, value ]",
+		"scope": "source.cloudformation"
+	},
+	"get-attr": {
+		"prefix": "get-attr",
+		"body": "!GetAtt logicalNameOfResource.attributeName",
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"get-azs": {
+		"prefix": "get-azs",
+		"body": "!GetAZs ''",
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"ref": {
+		"prefix": "ref",
+		"body": "!Ref logicalName",
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"parameter": {
+		"prefix": "parameter",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ",
+			"  Type: ${3:String|Number|CommaDelimitedList}",
+			"  Default: ${4:-}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"output": {
+		"prefix": "output",
+		"body": [
+			"${1:LogicalID}:",
+			"  Description: ${2:Information about the value}",
+			"  Value:",
+			"  Export: ",
+			"    Name:"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"tag": {
 		"prefix": "tag",
 		"body": [
-			"Tags:",
-			"-",
-			"  Key: ${1:keyname1}",
-			"  Value: ${2:value1}",
-			"-",
-			"  Key: ${3:keyname2}",
-			"  Value: ${4:value2}"
+			"Key: ${1:keyname}",
+			"Value: ${2:value}"
 		]
+	},
+	"map": {
+		"prefix": "map",
+		"body": [
+			"${1:mapName}:",
+			"  ${2:mapping01}:",
+			"    ${3:key01}:",
+			"      Name: ${4:value01}",
+			"  ${5:mapping02}:",
+			"    ${6:key02}:",
+			"      Name: ${7:value02}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"s3-bucket": {
+		"prefix": "s3-bucket",
+		"body": [
+			"${1:s3Bucket}:",
+			"  Type: AWS::S3::Bucket",
+			"  Properties: ",
+			"    AccessControl: ${2:Private | PublicRead | PublicReadWrite | AuthenticatedRead | LogDeliveryWrite | BucketOwnerRead | BucketOwnerFullControl}",
+			"    Bucketname: ${3}",
+			"    CorsConfiguration: ${4}",
+			"    LifecycleConfiguration: ${5}",
+			"    NotificationConfiguration: ${6}",
+			"    VersioningConfiguration: ${7}",
+			"    WebsiteConfiguration: ${8}",
+			"    Tags:",
+			"      - Key: ${9:key}",
+			"        Value: ${10:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"s3-bucketpolicy": {
+		"prefix": "s3-bucketpolicy",
+		"body": [
+			"${1:s3BucketPolicy}:",
+			"  Type: AWS::S3::BucketPolicy",
+			"  Properties:",
+			"    Bucket: ${2}",
+			"    PolicyDocument: ${3}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"security-group": {
+		"prefix": "security-group",
+		"body": [
+			"${1:secGroupName}:",
+			"  Type: AWS::EC2::SecurityGroup",
+			"  Properties:",
+			"    GroupName: ${2}",
+			"    GroupDescription: ${3}",
+			"    VpcId:${4}",
+			"    SecurityGroupIngress:",
+			"      - ${5:Security Group Rule}",
+			"    SecurityGroupEgress:",
+			"      - ${6:Security Group Rule}",
+			"    Tags:",
+			"      - Key:${7}",
+			"        Value:${8}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"subnet": {
+		"prefix": "subnet",
+		"body": [
+			"${1:subnetName}:",
+			"  Type: AWS::EC2::Subnet",
+			"  Properties:",
+			"    AvailabilityZone: ${2:zone-id}",
+			"    VpcId: ${3:vpc-id}",
+			"    CidrBlock: ${4:--.--.--.--/--}",
+			"    Tags:",
+			"      - Key: ${5:keyname}",
+			"        Value: ${6:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
 	},
 	"vpc": {
 		"prefix": "vpc",
 		"body": [
-			"myVPC:",
+			"${1:myVPC}:",
 			"  Type: AWS::EC2::VPC",
 			"  Properties:",
-			"    CidrBlock: ${1:--.--.--.--/--}",
-			"    EnableDnsSupport: ${2:true}",
+			"    CidrBlock: ${2:--.--.--.--/--}",
+			"    EnableDnsSupport: ${3:true}",
 			"    Tags:",
-			"    - Key: ${3:keyname}",
-			"      Value: ${4:value}"
+			"      - Key: ${4:keyname}",
+			"        Value: ${5:value}"
 		]
 	}
 }
