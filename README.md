@@ -18,6 +18,12 @@ Usage
 
 ![New template file](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/new_template_file.gif)
 
+
+YAML support
+-------------------
+
+YAML template creation follows the same syntax - type **start** to populate new template. Only **vpc** and **tag** resources are available for YAML at the time of this writing. 
+
 Installation
 -------------------
 
@@ -40,8 +46,9 @@ Download  **cform-latest.vsix** file from GitHub repo for manual install
 
 Changelog
 -------------------
+
 0.0.11
-* yaml - added test support 
+* yaml - added experimental support 
 * merged new snippets (Codepipeline, Codecommit, LaunchTemplate)
 * corrected Tags property
 
