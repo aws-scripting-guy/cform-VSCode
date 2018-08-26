@@ -295,6 +295,16 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"launch-template": {
+		"prefix": "launch-template",
+		"body": [
+			" \"Type\":\"AWS::EC2::LaunchTemplate\",",
+			"\t\"Properties\":{",
+			"\t\t\"LaunchTemplateName\" : ${1:\"--\"},",
+			"\t\t\"LaunchTemplateData\" : ${2:\"--\"}",
+			"\t}"
+		]
+	},
 	"logs-loggroup": {
 		"prefix": "logs-loggroup",
 		"body": "\r\n\"${1:logLogGroup}\": {\r\n  \"Type\": \"AWS::Logs::LogGroup\",\r\n  \"Properties\": {\r\n    \"RetentionInDays\": \"${2}\"\r\n  }\r\n}\r\n",
@@ -675,7 +685,7 @@
 	},
 	"tag": {
 		"prefix": "tag",
-		"body": "\r\n{ \"Key\": \"${1:-}\", \"Value\":  ${2:\"--\"} }\r\n",
+		"body": "\r\n\"Tags\":[\r\n{ \"Key\": \"${1:-}\", \"Value\":  ${2:\"--\"} }\r\n]",
 		"description": "",
 		"scope": "source.cloudformation"
 	},
@@ -693,7 +703,8 @@
 	},
 	"code-pipeline": {
 		"prefix": "code-pipeline",
-		"body": "\r\n\"${1:codepipeline}\": {\r\n  \"Type\" : \"AWS::CodePipeline::Pipeline\",\r\n  \"Properties\" : {\r\n        \"ArtifactStore\": {\r\n          \"Type\": \"S3\",\r\n          \"Location\": { \"Ref\" : \"s3Bucket\" }\r\n        },\r\n    \"DisableInboundStageTransitions\" : [ ],\r\n    \"Name\" : \"${3:name}\",\r\n    \"RestartExecutionOnUpdate\" : ${4:true | false},\r\n    \"RoleArn\" : \"${roleArn}\",\r\n    \"Stages\" : [ ]\r\n  }\r\n}",		"description": "",
+		"body": "\r\n\"${1:codepipeline}\": {\r\n  \"Type\" : \"AWS::CodePipeline::Pipeline\",\r\n  \"Properties\" : {\r\n        \"ArtifactStore\": {\r\n          \"Type\": \"S3\",\r\n          \"Location\": { \"Ref\" : \"s3Bucket\" }\r\n        },\r\n    \"DisableInboundStageTransitions\" : [ ],\r\n    \"Name\" : \"${3:name}\",\r\n    \"RestartExecutionOnUpdate\" : ${4:true | false},\r\n    \"RoleArn\" : \"${roleArn}\",\r\n    \"Stages\" : [ ]\r\n  }\r\n}",
+		"description": "",
 		"scope": "json"
 	},
 	"code-pipeline-stage": {

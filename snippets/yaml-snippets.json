@@ -1,0 +1,45 @@
+{
+	"start": {
+		"prefix": "start",
+		"body": [
+			"AWSTemplateFormatVersion: 2010-09-09",
+			"Description: ${1:---}",
+			"Metadata: ${2}",
+			"\r",
+			"Parameters: ${3}",
+			"\r",
+			"Mappings: ${4}",
+			"\r",
+			"Conditions: ${5}",
+			"\r",
+			"Resources: ${6}",
+			"\r",
+			"Outputs:"
+		]
+	},
+	"tag": {
+		"prefix": "tag",
+		"body": [
+			"Tags:",
+			"-",
+			"  Key: ${1:keyname1}",
+			"  Value: ${2:value1}",
+			"-",
+			"  Key: ${3:keyname2}",
+			"  Value: ${4:value2}"
+		]
+	},
+	"vpc": {
+		"prefix": "vpc",
+		"body": [
+			"myVPC:",
+			"  Type: AWS::EC2::VPC",
+			"  Properties:",
+			"    CidrBlock: ${1:--.--.--.--/--}",
+			"    EnableDnsSupport: ${2:true}",
+			"    Tags:",
+			"    - Key: ${3:keyname}",
+			"      Value: ${4:value}"
+		]
+	}
+}

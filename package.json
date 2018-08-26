@@ -5,9 +5,9 @@
     "name": "cform",
     "displayName": "CloudFormation",
     "description": "VS Code Plugin for CloudFormation",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "publisher": "aws-scripting-guy",
-    "icon": "images/ManagementTools_CloudFormation.svg",
+    "icon": "images/ManagementTools_CloudFormation.png",
     "repository": {
         "type": "git",
         "url": "https://github.com/aws-scripting-guy/cform-VSCode.git"
@@ -31,12 +31,27 @@
                     ".cform",
                     ".template"
                 ]
+            },
+            {
+                "id": "yaml",
+                "aliases": [
+                    "YAML",
+                    "yaml"
+                ],
+                "extensions": [
+                    ".yaml",
+                    ".yml"
+                ]
             }
         ],
         "snippets": [
             {
                 "language": "json",
                 "path": "./snippets/snippets.json"
+            },
+            {
+                "language": "yaml",
+                "path": "./snippets/yaml-snippets.json"
             }
         ]
     }

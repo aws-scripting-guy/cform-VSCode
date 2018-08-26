@@ -40,6 +40,9 @@ Download  **cform-latest.vsix** file from GitHub repo for manual install
 
 Changelog
 -------------------
+0.0.11
+* yaml - added basic support 
+* merged new snippets
 
 0.0.10
 * start snippet correction
