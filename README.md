@@ -22,7 +22,7 @@ Usage
 YAML support
 -------------------
 
-YAML template creation follows the same syntax - type **start** to populate new template. Only **vpc** and **tag** resources are available for YAML at the time of this writing. 
+YAML template creation follows the same syntax rules: type **start** to populate new template. Handsome of the most used snippets was translated. E.g.```s3-bucket```,```ec2-instance```,```rds-instance```,```elastic-load-balancer-internal```,```vpc```.
 
 Installation
 -------------------
@@ -54,6 +54,8 @@ This however has no effect on validity of the YAML document.
 
 Changelog
 -------------------
+0.0.12
+* yaml - several new snippets added (vpc, ec2-instance, autoscaling-group, rds-dbinstance, elastic-load-balancer-internal, subnet, s3-bucket, s3-bucket-policy, cloudwatch-alarm, ref, get-azs,get-attr, parameter, output, map, find-in-map) 
 
 0.0.11
 * yaml - added experimental support 
