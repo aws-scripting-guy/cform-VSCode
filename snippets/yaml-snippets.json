@@ -574,6 +574,68 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"sns-topic": {
+		"prefix": "sns-topic",
+		"body": [
+			"${1:snsTopic}:",
+			"  Type: AWS::SNS::Topic",
+			"  Properties:",
+			"    DisplayName: ${2}",
+			"    Subscription: ${3}",
+			"    TopicName: ${4}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"sns-topicpolicy": {
+		"prefix": "sns-topicpolicy",
+		"body": [
+			"${1:snsTopicPolicy}:",
+			"Type: AWS::SNS::TopicPolicy",
+			"Properties:",
+			"  Topics:",
+			"    - ",
+			"      ${2:sns-topic-arn}",
+			"  PolicyDocument: ${3:# A policy document. JSON or YAML}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"sqs-queuepolicy": {
+		"prefix": "sqs-queuepolicy",
+		"body": [
+			"${1:sqsQueuePolicy}:",
+			"  Type: AWS::SQS::QueuePolicy",
+			"  Properties:",
+			"    Queues:",
+			"      - ",
+			"        ${2:sqs-id}",
+			"    PolicyDocument: ${3:# include in JSON format}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"sqs-queue": {
+		"prefix": "sqs-queue",
+		"body": [
+			"${1:sqsQueue}:",
+			"  Type: AWS::SQS::Queue",
+			"  Properties:",
+			"    QueueName: ${2}",
+			"    DelaySeconds: ${3}",
+			"    MaximumMessageSize: ${4}",
+			"    MessageRetentionPeriod: ${5}",
+			"    ReceiveMessageWaitTimeSeconds: ${6}",
+			"    RedrivePolicy: ${6}",
+			"    VisibilityTimeout: ${7}",
+			"    FifoQueue: ${8: true | false}",
+			"    Tags:",
+			"      - Key: ${9:keyname}",
+			"        Value: ${10:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"vpc": {
 		"prefix": "vpc",
 		"body": [
@@ -628,7 +690,7 @@
 			"    DisableInboundStageTransitions: ${10}"
 		],
 		"description": "",
-		"scope": "json"
+		"scope": "yaml"
 	},
 	"code-pipeline-stage": {
 		"prefix": "code-pipeline-stage",
@@ -640,7 +702,7 @@
 			"  - ${3:blockers}"
 		],
 		"description": "",
-		"scope": "json"
+		"scope": "yaml"
 	},
 	"code-pipeline-action": {
 		"prefix": "code-pipeline-action",
@@ -663,7 +725,6 @@
 			"RunOrder: ${9:1|2|3|4}"
 		],
 		"description": "",
-		"scope": "json"
+		"scope": "yaml"
 	}
-
 }
