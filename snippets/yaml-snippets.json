@@ -88,6 +88,26 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"ec2-volume": {
+		"prefix": "ec2-volume",
+		"body": [
+			"${1:ec2Volume}:",
+			"  Type: AWS::EC2::Volume",
+			"  Properties:",
+			"    AutoEnableIO: ${2:true|false}",
+			"    AvailabilityZone: ${3}",
+			"    Encrypted: ${4:true|false}",
+			"    KmsKeyId: ${5}",
+			"    Size: ${6:0}",
+			"    SnapshotId: ${7:snap-}",
+			"    VolumeType: ${8:standard|io1|gp2}",
+			"    Tags:",
+			"      - Key: ${9:key}",
+			"        Value: ${10:value}"
+		],		
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"elastic-load-balancer-vpc-internal": {
 		"prefix": "elastic-load-balancer-vpc-internal",
 		"body": [
