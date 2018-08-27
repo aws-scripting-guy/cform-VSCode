@@ -381,6 +381,131 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"route-table-assoc": {
+		"prefix": "route-table-assoc",
+		"body": [
+			"${1:routeTableAssocName}:",
+			"  Type: AWS::EC2::SubnetRouteTableAssociation",
+			"  Properties:",
+			"    SubnetId: ${2:subnet-id}",
+			"    RouteTableId: ${3:rtable-id}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"route-table": {
+		"prefix": "route-table",
+		"body": [
+			"${1:routeTableName}:",
+			"  Type: AWS::EC2::RouteTable",
+			"  Properties:",
+			"    VpcId: ${2:vpc-id}",
+			"    Tags:",
+			"      - Key: ${3:keyname}",
+			"        Value: ${4:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"route": {
+		"prefix": "route",
+		"body": [
+			"${1:routeName}:",
+			"  Type: AWS::EC2::Route",
+			"  Properties:",
+			"    RouteTableId: ${2:rtable-id}",
+			"    DestinationCidrBlock: ${3:--.--.--.--/--}",
+			"    GatewayId: ${4:gataway-id}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"route53-healthcheck": {
+		"prefix": "route53-healthcheck",
+		"body": [
+			"${1:route53HealthCheck}:",
+			"  Type: AWS::Route53::HealthCheck",
+			"  Properties:",
+			"    HealthCheckConfig:",
+			"      IPAddress: ${2:'000.000.000.000'}",
+			"      Port: ${3:'80'}",
+			"      Type: ${4:HTTP}",
+			"      ResourcePath: ${5:'/example/index.html'}",
+			"      FullyQualifiedDomainName: ${6:'example.com'}",
+			"      RequestInterval: ${7:'30'}",
+			"      FailureThreshold: ${8:'3'}",
+			"    HealthCheckTags:",
+			"      - ",
+			"        Key: ${9:\"SampleKey1\"}",
+			"        Value: ${10:\"SampleValue1\"}",
+			"      - ",
+			"        Key: ${11:\"SampleKey2\"}",
+			"        Value: ${12:\"SampleValue2\"}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"route53-hostedzone": {
+		"prefix": "route53-hostedzone",
+		"body": [
+			"${1:route53HostedZone}:",
+			"  Type: AWS::Route53::HostedZone",
+			"  Properties:",
+			"    Name: ${2}",
+			"    HostedZoneConfig:",
+			"      Comment: ${3:My hosted zone for example.com}",
+			"    VPCs:",
+			"      - ",
+			"        VPCId: ${4:\"vpc-id\"}",
+			"        VPCRegion: ${5:\"vpc-region\"}",
+			"    HostedZoneTags:",
+			"      - ",
+			"        Key: ${6:\"SampleKey1\"}",
+			"        Value: ${7:\"SampleValue1\"}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"route53-recordsetgroup": {
+		"prefix": "route53-recordsetgroup",
+		"body": [
+			"${1:route53RSGroup}:",
+			"  Type: AWS::Route53::RecordSetGroup",
+			"  Properties:",
+			"    Comment: ${2}",
+			"    HostedZoneId: ${3}",
+			"    HostedZoneName: ${4}",
+			"    RecordSets: ",
+			"    - ${5:recordset}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"route53-recordset": {
+		"prefix": "route53-recordset",
+		"body": [
+			"${1:route53RS}:",
+			"  Type: AWS::Route53::RecordSet",
+			"  Properties:",
+			"    Name: ${2}",
+			"    Comment: ${3}",
+			"    Type: ${4:A | AAAA | CNAME | MX | NS | PTR | SOA | SPF | SRV | TXT}",
+			"    TTL: ${5}",
+			"    AliasTarget: ${6}",
+			"    Failover: ${7}",
+			"    GeoLocation: ${8}",
+			"    HealthCheckId: ${9}",
+			"    HostedZoneId: ${10}",
+			"    HostedZoneName: ${11}",
+			"    Region: ${12}",
+			"    ResourceRecords: ${13}",
+			"    - ${14:record}",
+			"    SetIdentifier: ${15}",
+			"    Weight: ${16}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"s3-bucket": {
 		"prefix": "s3-bucket",
 		"body": [
