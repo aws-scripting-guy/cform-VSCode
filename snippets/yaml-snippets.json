@@ -104,7 +104,19 @@
 			"    Tags:",
 			"      - Key: ${9:key}",
 			"        Value: ${10:value}"
-		],		
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"eip-vpc": {
+		"prefix": "eip-vpc",
+		"body": [
+			"${1:eipName}:",
+			"  Type: AWS::EC2::EIP",
+			"  Properties:",
+			"  Domain: vpc",
+			"  InstanceId: ${2:instance-id}"
+		],
 		"description": "",
 		"scope": "source.cloudformation"
 	},
@@ -309,6 +321,14 @@
 		"prefix": "get-azs",
 		"body": "!GetAZs ''",
 		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"if": {
+		"prefix": "if",
+		"body": [
+			"!If [condition_name, value_if_true, value_if_false]"
+		],
+		"description": "Intrinsic Function - If",
 		"scope": "source.cloudformation"
 	},
 	"ref": {
