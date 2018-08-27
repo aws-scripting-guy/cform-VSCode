@@ -73,7 +73,7 @@
 	},
 	"codecommit-repository": {
 		"prefix": "codecommit-repository",
-		"body": "\r\n\"${1:cloudWatchAlarm}\": {\r\n   \"Type\": \"AWS::CodeCommit::Repository\",\r\n   \"Properties\": {\r\n      \"RepositoryDescription\": \"${2}\",\r\n      \"RepositoryName\": \"${3}\",\r\n      \"Triggers\": [ \"${4}\" ],\r\n  }\r\n}\r\n",
+		"body": "\r\n\"${1:codeCommitRepository}\": {\r\n   \"Type\": \"AWS::CodeCommit::Repository\",\r\n   \"Properties\": {\r\n      \"RepositoryDescription\": \"${2}\",\r\n      \"RepositoryName\": \"${3}\",\r\n      \"Triggers\": [ \"${4}\" ],\r\n  }\r\n}\r\n",
 		"description": "",
 		"scope": "source.cloudformation"
 	},
