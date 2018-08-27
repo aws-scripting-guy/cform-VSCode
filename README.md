@@ -24,6 +24,8 @@ YAML support
 
 YAML template creation follows the same syntax rules: type **start** to populate new template. Handsome of the most used snippets was translated. E.g.```s3-bucket```,```ec2-instance```,```rds-instance```,```elastic-load-balancer-internal```,```vpc```.
 
+Please make sure you update regularly as additional snippets are being continuosly added.
+
 Installation
 -------------------
 
