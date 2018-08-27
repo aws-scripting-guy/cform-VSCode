@@ -586,5 +586,84 @@
 			"      - Key: ${4:keyname}",
 			"        Value: ${5:value}"
 		]
+	},
+	"vpn-gateway": {
+		"prefix": "vpn-gateway",
+		"body": [
+			"${1:vgwName}:",
+			"  Type: AWS::EC2::VPNGateway",
+			"  Properties:",
+			"    Type: ipsec.1",
+			"    Tags:",
+			"      - Key: ${2:keyname}",
+			"        Value: ${3:value}",
+			"${4:AttachVpnGateway}:",
+			"  Type: AWS::EC2::VPCGatewayAttachment",
+			"  Properties:",
+			"    VpcId: ${4:vpc-id}",
+			"    VpnGatewayId: !Ref ${1:vgwName}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"code-pipeline": {
+		"prefix": "code-pipeline",
+		"body": [
+			"${1:codepipeline}:",
+			"  Type: AWS::CodePipeline::Pipeline",
+			"  Properties:",
+			"    Name: ${2:name}",
+			"    RoleArn: ${3}",
+			"    ArtifactStore:",
+			"      Type: S3",
+			"      Location: ${4}",
+			"    Stages: ${5}",
+			"      - ",
+			"        Name: ${6:name}",
+			"        Actions:",
+			"          - ${7:actions}",
+			"        Blockers:",
+			"          - ${8:blockers}",
+			"    RestartExecutionOnUpdate: ${9:true | false}",
+			"    DisableInboundStageTransitions: ${10}"
+		],
+		"description": "",
+		"scope": "json"
+	},
+	"code-pipeline-stage": {
+		"prefix": "code-pipeline-stage",
+		"body": [
+			"Name: ${1:name}",
+			"Actions:",
+			"  - ${2:actions}",
+			"Blockers:",
+			"  - ${3:blockers}"
+		],
+		"description": "",
+		"scope": "json"
+	},
+	"code-pipeline-action": {
+		"prefix": "code-pipeline-action",
+		"body": [
+			"Name: ${1:\"actionName\"}",
+			"ActionTypeId:",
+			"  Category: ${2:Source | Build | Deploy | Test | Invoke | Approval}",
+			"  Owner: ${3:AWS | ThirdParty | Custom}",
+			"  Provider: ${4:S3|CodeCommit|GitHub|CloudFormation|CodeBuild|CodeDeploy|ElasticBeanstalk|Lambda|ECS|jenkinsProviderName}",
+			"  Version: \"1\"",
+			"Configuration:",
+			"    ${5:key: value}",
+			"InputArtifacts:",
+			"    - ",
+			"      ${6:inputartifact}",
+			"OutputArtifacts:",
+			"    - ",
+			"      ${7:outputartifact}",
+			"RoleArn: ${8:\"\"}",
+			"RunOrder: ${9:1|2|3|4}"
+		],
+		"description": "",
+		"scope": "json"
 	}
+
 }
