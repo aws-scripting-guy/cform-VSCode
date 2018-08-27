@@ -166,6 +166,93 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"rds-dbparametergroup": {
+		"prefix": "rds-dbparametergroup",
+		"body": [
+			"${1:rdsDBParameterGroup}:",
+			"  Type: AWS::RDS::DBParameterGroup",
+			"  Properties:",
+			"    Description: ${2}",
+			"    Family: ${3}",
+			"    Parameters:",
+			"      ${4:key1}: ${5:value1}",
+			"      ${6:key2}: ${7:value2}",
+			"    Tags:",
+			"      - Key: ${8:keyname}",
+			"        Value: ${9:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"rds-dbsecuritygroup": {
+		"prefix": "rds-dbsecuritygroup",
+		"body": [
+			"${1:rdsDBSecurityGroup}:",
+			"  Type: AWS::RDS::DBSecurityGroup",
+			"  Properties:",
+			"    EC2VpcId: ${2}",
+			"    GroupDescription: ${3}",
+			"    DBSecurityGroupIngress:",
+			"      - ",
+			"        CIDRIP: ${4:--.--.--.--/--}",
+			"        DBSecurityGroupName: ${5}",
+			"        EC2SecurityGroupId: ${6}",
+			"        EC2SecurityGroupName: ${7}",
+			"        EC2SecurityGroupOwnerId: ${8}",
+			"      - ",
+			"        ${9: RDS Security Group Rule}",
+			"  Tags:",
+			"    - Key: ${10:keyname}",
+			"      Value: ${11:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"rds-dbsecuritygroupingress": {
+		"prefix": "rds-dbsecuritygroupingress",
+		"body": [
+			"CIDRIP: ${1:--.--.--.--/--}",
+			"DBSecurityGroupName: ${2}",
+			"EC2SecurityGroupId: ${3}",
+			"EC2SecurityGroupName: ${4}",
+			"EC2SecurityGroupOwnerId: ${5}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"rds-dbsubnetgroup": {
+		"prefix": "rds-dbsubnetgroup",
+		"body": [
+			"${1:rdsDBSubnetGroup}:",
+			"  Type: AWS::RDS::DBSubnetGroup",
+			"  Properties:",
+			"    DBSubnetGroupDescription: ${2}",
+			"    SubnetIds:",
+			"      - ${3:subnet-id}",
+			"  Tags:",
+			"    - Key: ${4:keyname}",
+			"      Value: ${5:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"rds-eventsubscription": {
+		"prefix": "rds-eventsubscription",
+		"body": [
+			"${1:rdsEventSubscription}:",
+			"Type: AWS::RDS::EventSubscription",
+			"Properties:",
+			"  Enabled: ${2:true | false}",
+			"  EventCategories:",
+			"    - ${3:event-category}",
+			"  SnsTopicArn: ${4}",
+			"  SourceIds:",
+			"    - ${5:source-id}",
+			"  SourceType: ${6}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"start": {
 		"prefix": "start",
 		"body": [
