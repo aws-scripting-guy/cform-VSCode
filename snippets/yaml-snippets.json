@@ -40,6 +40,54 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"availability-zone": {
+		"prefix": "availability-zone",
+		"body": [
+			"!Join",
+			"  - ''",
+			"  - - !Ref 'AWS::Region'",
+			"    - ${1:'a'}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"cloudfront-distribution": {
+		"prefix": "cloudfront-distribution",
+		"body": [
+			"${1:cloudfrontDistribution}:",
+			"  Type: AWS::CloudFront::Distribution",
+			"  Properties:",
+			"    DistributionConfig:",
+			"      CacheBehaviors:",
+			"        - ",
+			"          ${2:behavior}",
+			"      DefaultCacheBehavior: ${3}",
+			"      IPV6Enabled: ${4:true | false}",
+			"      Origins:",
+			"        - ",
+			"          ${5:origin}",
+			"    Tags:",
+			"      - Key: ${6:key}",
+			"        Value: ${7:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"cloudtrail": {
+		"prefix": "cloudtrail",
+		"body": [
+			"${1:cloudTrail}:",
+			"  Type: AWS::CloudTrail::Trail",
+			"  Properties:",
+			"    S3BucketName: ${2}",
+			"    IncludeGlobalServiceEvents: ${3:true | false}",
+			"    IsLogging: ${4:true | false}",
+			"    S3KeyPrefix: ${5}",
+			"    SnsTopicName: ${6}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"cloudwatch-alarm": {
 		"prefix": "cloudwatch-alarm",
 		"body": [
@@ -75,6 +123,33 @@
 			"    RepositoryName: ${3}",
 			"    Triggers:",
 			"      - ${4:trigger}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"dynamodb-table": {
+		"prefix": "dynamodb-table",
+		"body": [
+			"${1:dynamodbTable}:",
+			"  Type: AWS::DynamoDB::Table",
+			"  Properties:",
+			"    AttributeDefinitions:",
+			"      - ",
+			"        ${2:attribute definition}",
+			"    GlobalSecondaryIndexes:",
+			"      - ",
+			"        ${3:global secondary indexes}",
+			"    LocalSecondaryIndexes:",
+			"      - ",
+			"        ${4:local secondary indexes}",
+			"    KeySchema:",
+			"      - ",
+			"        ${5:key schema}",
+			"    ProvisionedThroughput: ${6}",
+			"    TableName: ${7}",
+			"    Tags:",
+			"      - Key: ${8:key}",
+			"        Value: ${9:value}"
 		],
 		"description": "",
 		"scope": "source.cloudformation"
@@ -704,7 +779,7 @@
 			"    DisableInboundStageTransitions: ${10}"
 		],
 		"description": "",
-		"scope": "yaml"
+		"scope": "json"
 	},
 	"code-pipeline-stage": {
 		"prefix": "code-pipeline-stage",
@@ -716,7 +791,7 @@
 			"  - ${3:blockers}"
 		],
 		"description": "",
-		"scope": "yaml"
+		"scope": "json"
 	},
 	"code-pipeline-action": {
 		"prefix": "code-pipeline-action",
@@ -739,6 +814,6 @@
 			"RunOrder: ${9:1|2|3|4}"
 		],
 		"description": "",
-		"scope": "yaml"
+		"scope": "json"
 	}
 }
