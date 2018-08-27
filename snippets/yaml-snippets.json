@@ -65,6 +65,20 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"codecommit-repository": {
+		"prefix": "codecommit-repository",
+		"body": [
+			"${1:codeCommitRepository}:",
+			"  Type: AWS::CodeCommit::Repository",
+			"  Properties:",
+			"    RepositoryDescription: ${2}",
+			"    RepositoryName: ${3}",
+			"    Triggers:",
+			"      - ${4:trigger}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"ec2-instance": {
 		"prefix": "ec2-instance",
 		"body": [
