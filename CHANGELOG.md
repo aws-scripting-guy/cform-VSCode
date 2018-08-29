@@ -1,5 +1,8 @@
 Changelog
 -------------------
+0.0.13
+* yaml - most of the snippets translated 
+
 0.0.12
 * yaml - several new snippets added (vpc, ec2-instance, autoscaling-group, rds-dbinstance, elastic-load-balancer-internal, subnet, s3-bucket, s3-bucket-policy, cloudwatch-alarm, ref, get-azs,get-attr, parameter, output, map, find-in-map) 
 
