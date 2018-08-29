@@ -242,6 +242,264 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"elb-listener": {
+		"prefix": "elb-listener",
+		"body": [
+			"InstancePort: ${1}",
+			"InstanceProtocol: ${2:HTTP|HTTPS|TCP|SSL}",
+			"LoadBalancerPort: ${3}",
+			"Protocol: ${4:HTTP|HTTPS|TCP|SSL}",
+			"SSLCertificateId: ${5}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"iam-accesskey": {
+		"prefix": "iam-accesskey",
+		"body": [
+			"${1:iamAccessKey:}",
+			"  Type: AWS::IAM::AccessKey",
+			"  Properties:",
+			"  Status: ${2}",
+			"  UserName: ${3}",
+			"  Serial: ${4}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"iam-group": {
+		"prefix": "iam-group",
+		"body": [
+			"${1:iamGroup}:",
+			"  Type: AWS::IAM::Group",
+			"  Properties:",
+			"    Path: ${2}",
+			"    Policies:",
+			"      - ${policy}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"iam-instanceprofile": {
+		"prefix": "iam-instanceprofile",
+		"body": [
+			"${1:iamInstanceProfile}:",
+			"  Type: AWS::IAM::InstanceProfile",
+			"  Properties:",
+			"    Path: ${2:/}",
+			"    Roles:",
+			"      - ${3:rolename}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"iam-policy": {
+		"prefix": "iam-policy",
+		"body": [
+			"${1:iamPolicy}:",
+			"  Type: AWS::IAM::Policy",
+			"  Properties:",
+			"    PolicyName:${2}",
+			"    Groups:",
+			"     - ${3:group}",
+			"    Roles:",
+			"     - ${4:role}",
+			"    Users:",
+			"     - ${5:user}",
+			"    PolicyDocument: ${6: # policy document - can be JSON or YAML}",
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"iam-role": {
+		"prefix": "iam-role",
+		"body": [
+			"${1:iamRole}:",
+			"  Type: AWS::IAM::Role",
+			"  Properties:",
+			"    Path:",
+			"    AssumeRolePolicyDocument: ",
+			"    Policies:",
+			"      - ",
+			"       PolicyName: \"root\"",
+			"       PolicyDocument:",
+			"         Version: \"2012-10-17\"",
+			"         Statement:",
+			"            - ",
+			"              Effect: \"Allow\"",
+			"              Action: \"*\"",
+			"              Resource: \"*\""
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"iam-user": {
+		"prefix": "iam-user",
+		"body": [
+			"${1:iamUser:}",
+			"  Type: AWS::IAM::User",
+			"  Properties:",
+			"    Path: ${2:/}",
+			"    Groups:",
+			"      - ${3:groupname}",
+			"    LoginProfile:",
+			"      Password: ${4}",
+			"      PasswordResetRequired: ${5:true|false}",
+			"    Policies:",
+			"      - ${6:}policyname",
+			"    ManagedPolicyArns:",
+			"      - ${7:managedpolicyarn}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"iam-usertogroupaddition": {
+		"prefix": "iam-usertogroupaddition",
+		"body": [
+			"${1:iamUserToGroupAddition}:",
+			"  Type: AWS::IAM::UserToGroupAddition",
+			"  Properties:",
+			"    GroupName:${2}",
+			"    Users:",
+			"      - ${3:username}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"internet-gateway": {
+		"prefix": "internet-gateway",
+		"body": [
+			"${1:igwName}:",
+			"  Type: AWS::EC2::InternetGateway",
+			"  Properties:",
+			"    Tags:",
+			"      - Key: ${2:keyname}",
+			"        Value: ${3:value}",
+			"${4:AttachGateway}:",
+			"  Type: AWS::EC2::VPCGatewayAttachment",
+			"  Properties:",
+			"    VpcId: ${4:vpc-id}",
+			"    InternetGatewayId: !Ref ${1:igwName}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"kinesis-stream": {
+		"prefix": "kinesis-stream",
+		"body": [
+			"${1:kinesisStream}:",
+			"  Type: AWS::Kinesis::Stream",
+			"  Properties:",
+			"    Name:${2}",
+			"    RetentionPeriodHours: ${3:0}",
+			"    ShardCount: ${4:0}",
+			"    StreamEncryption:",
+			"      EncryptionType: KMS",
+			"      KeyId: ${5: # The GUID for the customer-managed KMS key to use for encryption}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"lambda-alias": {
+		"prefix": "lambda-alias",
+		"body": [
+			"${1:lambdaAlias}:",
+			"  Type: AWS::Lambda::Alias",
+			"  Properties:",
+			"    Description:${2}",
+			"    FunctionName:${3: #The version of the Lambda function that you want to associate with this alias.}",
+			"    FunctionVersion:${4}",
+			"    Name:${5: #A name for the alias}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"lambda-function": {
+		"prefix": "lambda-function",
+		"body": [
+			"${1:lambdaFunction}:",
+			"  Type: AWS::Lambda::Function",
+			"  Properties:",
+			"    Description: ${2}",
+			"    FunctionName: ${3}",
+			"    Handler: ${4}",
+			"    KmsKeyArn: ${5}",
+			"    MemorySize: ${6:128}",
+			"    Role: ${7:role-arn}",
+			"    Runtime: ${8:nodejs | nodejs4.3 | nodejs6.10 | nodejs8.10 | java8 | python2.7 | python3.6 | dotnetcore1.0 | dotnetcore2.0 | dotnetcore2.1 | nodejs4.3-edge | go1.x}",
+			"    Timeout: ${9}",
+			"    VpcConfig:",
+			"      SecurityGroupIds:",
+			"        - ${10:sg-id}",
+			"      SubnetIds:",
+			"        - ${11:subnet-id}",
+			"    Environment:",
+			"      Variables:",
+			"        ${12:key1}: ${13:value1} # A map of key-value pairs that the Lambda function can access",
+			"    Code:",
+			"      S3Bucket: ${14}",
+			"      S3Key: ${15}",
+			"      S3ObjectVersion: ${16}",
+			"      ZipFile: ${17}",
+			"    Tags:",
+			"      - Key: ${18:keyname}",
+			"        Value: ${19:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"lambda-permission": {
+		"prefix": "lambda-permission",
+		"body": [
+			"${1:lambdaPermission}:",
+			"  Type: AWS::Lambda::Permission",
+			"  Properties:",
+			"    Action: ${2}",
+			"    FunctionName: ${3}",
+			"    Principal: ${4}",
+			"    SourceAccount: ${5}",
+			"    SourceArn: ${6}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"lambda-version": {
+		"prefix": "lambda-version",
+		"body": [
+			"${1:lambdaVersion}:",
+			"  Type: AWS::Lambda::Version",
+			"  Properties:",
+			"    Description: ${2}",
+			"    FunctionName: ${3}",
+			"    CodeSha256: ${4}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"launch-config": {
+		"prefix": "launch-config",
+		"body": [
+			"${1:launchConfigName}:",
+			"  Type: AWS::AutoScaling::LaunchConfiguration",
+			"  Properties:",
+			"    LaunchConfigurationName: ${2}",
+			"    AssociatePublicIpAddress: ${3:true|false}",
+			"    IamInstanceProfile: ${4:}",
+			"    ImageId: ${5}",
+			"    EbsOptimized: ${6:true|false}",
+			"    InstanceMonitoring: ${7:true|false}",
+			"    InstanceType: ${8}",
+			"    KernelId: ${9}",
+			"    KeyName: ${10}",
+			"    SecurityGroups:",
+			"      - ${11:sg-id}",
+			"    UserData:",
+			"      Fn::Base64: !Sub",
+			"        #!/bin/bash -ex # your script here"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"rds-dbinstance": {
 		"prefix": "rds-dbinstance",
 		"body": [
