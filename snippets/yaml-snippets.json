@@ -1,5 +1,4 @@
 {
-
 	"autoscaling-group-vpc": {
 		"prefix": "autoscaling-group-vpc",
 		"body": [
@@ -510,6 +509,35 @@
 			"    LaunchTemplateName: ${2}",
 			"    LaunchTemplateData: ${3}"
 		]
+	},
+	"logs-loggroup": {
+		"prefix": "logs-loggroup",
+		"body": [
+			"${1:logLogGroup}:",
+			"  Type: AWS::Logs::LogGroup",
+			"  Properties:",
+			"    RetentionInDays: ${2}",
+			"    LogGroupName: ${3}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"logs-metricfilter": {
+		"prefix": "logs-metricfilter",
+		"body": [
+			"${1:logsMetricFilter}:",
+			"  Type: AWS::Logs::MetricFilter",
+			"  Properties:",
+			"    FilterPattern: ${2} # Example: [..., request=*.html*, status_code=4*,]",
+			"    LogGroupName: ${3}",
+			"    MetricTransformations:",
+			"      - ",
+			"        MetricValue: ${4} # Example: \"1\"",
+			"        MetricNamespace: ${5} # Example: \"WebServer/404s\"",
+			"        MetricName: ${6} # Example: \"404Count\""
+		],
+		"description": "",
+		"scope": "source.cloudformation"
 	},
 	"rds-dbinstance": {
 		"prefix": "rds-dbinstance",
@@ -1174,6 +1202,28 @@
 			"    Tags:",
 			"      - Key:${7}",
 			"        Value:${8}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"security-group-egress-cidr": {
+		"prefix": "security-group-egress-cidr",
+		"body": [
+			"IpProtocol: ${1:[tcp|udp|ip]}",
+			"FromPort: ${2}",
+			"ToPort: ${3}",
+			"CidrIp: ${4:--.--.--.--/--}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"security-group-ingress-cidr": {
+		"prefix": "security-group-ingress-cidr",
+		"body": [
+			"IpProtocol: ${1:[tcp|udp|ip]}",
+			"FromPort: ${2}",
+			"ToPort: ${3}",
+			"CidrIp: ${4:--.--.--.--/--}"
 		],
 		"description": "",
 		"scope": "source.cloudformation"
