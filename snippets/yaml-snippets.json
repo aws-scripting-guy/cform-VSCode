@@ -1,4 +1,5 @@
 {
+
 	"autoscaling-group-vpc": {
 		"prefix": "autoscaling-group-vpc",
 		"body": [
@@ -638,6 +639,97 @@
 			"  SourceIds:",
 			"    - ${5:source-id}",
 			"  SourceType: ${6}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"redshift-cluster": {
+		"prefix": "redshift-cluster",
+		"body": [
+			"${1:redshiftCluster}:",
+			"  Type: AWS::Redshift::Cluster",
+			"  Properties:",
+			"    AllowVersionUpgrade: ${2:true | false}",
+			"    AutomatedSnapshotRetentionPeriod: ${3}",
+			"    AvailabilityZone: ${4}",
+			"    ClusterParameterGroupName: ${5}",
+			"    ClusterSecurityGroups:",
+			"      - ${6:sg-id}",
+			"    ClusterSubnetGroupName: ${7}",
+			"    ClusterType: ${8}",
+			"    ClusterVersion: ${9}",
+			"    DBName: ${10}",
+			"    ElasticIp: ${11}",
+			"    Encrypted: ${12:true | false}",
+			"    HsmClientCertificateIdentifier: ${13}",
+			"    HsmConfigurationIdentifier: ${14}",
+			"    MasterUsername: ${15}",
+			"    MasterUserPassword: ${16}",
+			"    NodeType: ${17}",
+			"    NumberOfNodes: ${18}",
+			"    OwnerAccount: ${19}",
+			"    Port: ${20}",
+			"    PreferredMaintenanceWindow: ${21}",
+			"    PubliclyAccessible: ${22:true | false}",
+			"    SnapshotClusterIdentifier: ${23}",
+			"    SnapshotIdentifier: ${24}",
+			"    VpcSecurityGroupIds:",
+			"      - ${25:sg-id}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"redshift-clusterparametergroup": {
+		"prefix": "redshift-clusterparametergroup",
+		"body": [
+			"${1:redshiftClusterParameterGroup}:",
+			"  Type: AWS::Redshift::ClusterParameterGroup",
+			"  Properties:",
+			"    Description: ${2}",
+			"    ParameterGroupFamily: ${3}",
+			"    Parameters:",
+			"      - ${4:parameter}",
+			"    Tags:",
+			"      - Key: ${5:keyname}",
+			"        Value: ${6:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"redshift-clustersecuritygroup": {
+		"prefix": "redshift-clustersecuritygroup",
+		"body": [
+			"${1:redshiftClusterSecurityGroup}:",
+			"  Type: AWS::Redshift::ClusterSecurityGroup",
+			"  Properties:",
+			"    Description: ${2}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"redshift-clustersecuritygroupingress": {
+		"prefix": "redshift-clustersecuritygroupingress",
+		"body": [
+			"${1:redshiftClusterSecurityGroupIngress}:",
+			"  Type: AWS::Redshift::ClusterSecurityGroupIngress",
+			"  Properties:",
+			"    ClusterSecurityGroupName: ${2}",
+			"    CIDRIP: ${3}",
+			"    EC2SecurityGroupName: ${4}",
+			"    EC2SecurityGroupOwnerId: ${5}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"redshift-clustersubnetgroup": {
+		"prefix": "redshift-clustersubnetgroup",
+		"body": [
+			"${1:redshiftClusterSubnetGroup}:",
+			"  Type: AWS::Redshift::ClusterSubnetGroup",
+			"  Properties:",
+			"    Description: ${2}",
+			"    SubnetIds:",
+			"      - ${3:subnet-id}"
 		],
 		"description": "",
 		"scope": "source.cloudformation"
