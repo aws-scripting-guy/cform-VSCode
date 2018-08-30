@@ -53,6 +53,31 @@
                 "language": "yaml",
                 "path": "./snippets/yaml-snippets.json"
             }
-        ]
-    }
+        ],
+        "configurationDefaults": {
+            "[yaml]": {
+                "yaml.customTags": [
+                    "!And",
+                    "!If",
+                    "!Not",
+                    "!Equals",
+                    "!Or",
+                    "!FindInMap",
+                    "!Base64",
+                    "!Cidr",
+                    "!Ref",
+                    "!Sub",
+                    "!GetAtt",
+                    "!GetAZs",
+                    "!ImportValue",
+                    "!Select",
+                    "!Split",
+                    "!Join"
+                ]
+            }
+        }
+    },
+    "extensionDependencies":[
+        "redhat.vscode-yaml"
+    ]
 }
