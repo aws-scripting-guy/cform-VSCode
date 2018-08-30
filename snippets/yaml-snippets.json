@@ -306,7 +306,7 @@
 			"     - ${4:role}",
 			"    Users:",
 			"     - ${5:user}",
-			"    PolicyDocument: ${6: # policy document - can be JSON or YAML}",
+			"    PolicyDocument: ${6: # policy document - can be JSON or YAML}"
 		],
 		"description": "",
 		"scope": "source.cloudformation"
@@ -500,6 +500,16 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"launch-template": {
+		"prefix": "launch-template",
+		"body": [
+			"${1:launchTemplateName}:",
+			"  Type: AWS::EC2::LaunchTemplate",
+			"  Properties:",
+			"    LaunchTemplateName: ${2}",
+			"    LaunchTemplateData: ${3}"
+		]
+	},
 	"rds-dbinstance": {
 		"prefix": "rds-dbinstance",
 		"body": [
@@ -683,6 +693,177 @@
 		"body": "!Ref logicalName",
 		"description": "",
 		"scope": "source.cloudformation"
+	},
+	"parameter-type-availabilityzone-name-list": {
+		"prefix": "parameter-type-availabilityzone-name-list",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: List<AWS::EC2::AvailabilityZone::Name>",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-availabilityzone-name": {
+		"prefix": "parameter-type-availabilityzone-name",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::EC2::AvailabilityZone::Name",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-ec2-image-id-list": {
+		"prefix": "parameter-type-ec2-image-id-list",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: List<AWS::EC2::Image::Id>",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-ec2-image-id": {
+		"prefix": "parameter-type-ec2-image-id",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::EC2::Image::Id",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-ec2-instance-id-list": {
+		"prefix": "parameter-type-ec2-instance-id-list",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: List<AWS::EC2::Instance::Id>",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-ec2-instance-id": {
+		"prefix": "parameter-type-ec2-instance-id",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::EC2::Instance::Id",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-ec2-security-group-name-list": {
+		"prefix": "parameter-type-ec2-security-group-name-list",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: List<AWS::EC2::SecurityGroup::GroupName>",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-ec2-security-group-name": {
+		"prefix": "parameter-type-ec2-security-group-name",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::EC2::SecurityGroup::GroupName",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-ec2-volume-id-list": {
+		"prefix": "parameter-type-ec2-volume-id-list",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: List<AWS::EC2::Volume::Id>",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-ec2-volume-id": {
+		"prefix": "parameter-type-ec2-volume-id",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::EC2::Volume::Id",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-keypair-keyname": {
+		"prefix": "parameter-type-keypair-keyname",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::EC2::KeyPair::KeyName",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-route53-hostedzone-id-list": {
+		"prefix": "parameter-type-route53-hostedzone-id-list",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: List<AWS::Route53::HostedZone::Id>",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-route53-hostedzone-id": {
+		"prefix": "parameter-type-route53-hostedzone-id",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::Route53::HostedZone::Id",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-securitygroup-id-list": {
+		"prefix": "parameter-type-securitygroup-id-list",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: List<AWS::EC2::SecurityGroup::Id>",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-securitygroup-id": {
+		"prefix": "parameter-type-securitygroup-id",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::EC2::SecurityGroup::Id",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-subnet-id-list": {
+		"prefix": "parameter-type-subnet-id-list",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: List<AWS::EC2::Subnet::Id>",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-subnet-id": {
+		"prefix": "parameter-type-subnet-id",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::EC2::Subnet::Id",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-vpc-id-list": {
+		"prefix": "parameter-type-vpc-id-list",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: List<AWS::EC2::VPC::Id>",
+			"  Default: ${3}"
+		]
+	},
+	"parameter-type-vpc-id": {
+		"prefix": "parameter-type-vpc-id",
+		"body": [
+			"${1:paramName}:",
+			"  Description: ${2}",
+			"  Type: AWS::EC2::VPC::Id",
+			"  Default: ${3}"
+		]
 	},
 	"parameter": {
 		"prefix": "parameter",
