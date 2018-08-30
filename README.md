@@ -24,13 +24,13 @@ YAML templates
 Extension fully supports YAML templates. YAML template creation follows the same syntax rules: 
 
 1. Create new YAML document
-2. type **start** to populate new template
+2. Type **start** to populate new template
 3. **Start typing** desired **resource name** and hit ```tab``` key
 
 > **Note:** YAML support is dependent on YAML Language Server.
 By default,  YAML Language Server (Red Hat YAML recommended) will be installed automatically as prerequisite. 
 
-> **Note:** If you do not want to install YAML Language Server, install version **cform-noyaml.vsix** from GitHub [here](). 
+> **Note:** If you do not want to install YAML Language Server, install version **cform-noyaml.vsix** from [GitHub](https://github.com/aws-scripting-guy/cform-VSCode). 
 
 YAML setup
 ------------------
