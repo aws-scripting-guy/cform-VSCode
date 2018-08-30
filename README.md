@@ -1,7 +1,7 @@
 CloudFormation support for Visual Studio Code 
 ===================
 
-This is fork of [ST3 CloudFormation plugin](https://github.com/beaknit/cform).
+This is a fork of [ST3 CloudFormation plugin](https://github.com/beaknit/cform).
 
 
 Usage
@@ -9,38 +9,47 @@ Usage
 
  1. Install the extension
  2. Create **new file**
- 3. Set syntax to **JSON**
+ 3. Set syntax to **JSON** or **YAML**
  4. Type **start** and press ```tab``` key to populate basic template skeleton
  5. **Start typing** desired **resource name** and hit ```tab``` key
 
 
-> **Note:** CloudFormation support works with JSON syntax selected or .json, .cform, .template file extensions. These are commonly used CloudFormation template extensions.
+> **Note:** CloudFormation support works with YAML/JSON syntax selected or .json, .cform, .template file extensions. These are commonly used CloudFormation template extensions.
 
 ![New template file](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/new_template_file.gif)
 
+YAML templates
+------------------
 
-YAML support
--------------------
+Extension fully supports YAML templates. YAML template creation follows the same syntax rules: type **start** to populate new template. 
 
-YAML template creation follows the same syntax rules: type **start** to populate new template. 
+YAML Language Server is required. 
+1. Install [YAML Language Server](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) 
+2. Whitelist intrinsic function tags - paste preferences below into your User Settings (Ctrl + ,) 
 
-Please make sure you update regularly as additional snippets are being continuosly added.
-
-> **Note:** Requires installation of [YAML Language Server](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml). 
-
-
-Installation
--------------------
-
- 1. Install Visual Studio Code 0.10.6 or higher
- 2. Launch Code
- 3. Invoke command palette by ```Ctrl-Shift-P``` (Windows, Linux) or ```Cmd-Shift-P``` (OSX)
- 4. **Type** ```Extension```
- 4. **Select** ```Install Extension```
- 5. **Choose** extension **CloudFormation**
- 6. Restart Visual Studio Code
-
-![Installation](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/install_extension.gif)
+```json
+    // Custom tags for the parser to use
+    "yaml.customTags": [
+        "!And",
+        "!If",
+        "!Not",
+        "!Equals",
+        "!Or",
+        "!FindInMap",
+        "!Base64",
+        "!Cidr",
+        "!Ref",
+        "!Sub",
+        "!GetAtt",
+        "!GetAZs",
+        "!ImportValue",
+        "!Select",
+        "!Split",
+        "!Join"
+    ],
+    // Enable/disable default YAML formatter (requires restart)
+    "yaml.format.enable": true,
+```
 
 Troubleshooting
 -------------------
@@ -55,9 +64,9 @@ Known issues
 When working with YAML documents, your current YAML language interpreter might not support syntax of AWS intrinsic functions, thus marking them as *unknown tag*. 
 This however has no effect on validity of the YAML document. 
 
-You can solve this issue by [whitelisting custom tags in your user settings](https://github.com/aws-scripting-guy/cform-VSCode/blob/master/yaml.customTags.json).
+> **Note:** You can solve this issue by whitelisting specific tags following instructions under section **YAML Templates**. 
 
-> **Note:** Works only for Red Hat YAML Language Server
+> **Note:** Tested only with Red Hat YAML Language Server
 
 ![YAML known issue](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/known_issue1.png)
 
