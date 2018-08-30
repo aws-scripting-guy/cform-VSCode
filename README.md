@@ -22,9 +22,12 @@ Usage
 YAML support
 -------------------
 
-YAML template creation follows the same syntax rules: type **start** to populate new template. Handsome of the most used snippets was translated. E.g.```s3-bucket```,```ec2-instance```,```rds-instance```,```elastic-load-balancer-internal```,```vpc```.
+YAML template creation follows the same syntax rules: type **start** to populate new template. 
 
 Please make sure you update regularly as additional snippets are being continuosly added.
+
+> **Note:** Requires installation of [YAML Language Server](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml). 
+
 
 Installation
 -------------------
@@ -52,32 +55,11 @@ Known issues
 When working with YAML documents, your current YAML language interpreter might not support syntax of AWS intrinsic functions, thus marking them as *unknown tag*. 
 This however has no effect on validity of the YAML document. 
 
+You can solve this issue by [whitelisting custom tags in your user settings](https://github.com/aws-scripting-guy/cform-VSCode/blob/master/yaml.customTags.json).
+
+> **Note:** Works only for Red Hat YAML Language Server
+
 ![YAML known issue](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/known_issue1.png)
-
-Changelog
--------------------
-0.0.13
-* yaml - most of the snippets translated 
-
-0.0.12
-* yaml - several new snippets added (vpc, ec2-instance, autoscaling-group, rds-dbinstance, elastic-load-balancer-internal, subnet, s3-bucket, s3-bucket-policy, cloudwatch-alarm, ref, get-azs,get-attr, parameter, output, map, find-in-map) 
-
-0.0.11
-* yaml - added experimental support 
-* merged new snippets (Codepipeline, Codecommit, LaunchTemplate)
-* corrected Tags property
-
-0.0.10
-* start snippet correction
-* lambda support
-* function IF
-
-0.0.8
-* corrected issue with missing language mode UI
-* added latest .vsix to GitHub repo for manual install
-
-0.0.6
-* added support for .cform and .template file extensions
 
 Contributing
 -------------------
