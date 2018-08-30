@@ -21,11 +21,23 @@ Usage
 YAML templates
 ------------------
 
-Extension fully supports YAML templates. YAML template creation follows the same syntax rules: type **start** to populate new template. 
+Extension fully supports YAML templates. YAML template creation follows the same syntax rules: 
 
-YAML Language Server is required. 
-1. Install [YAML Language Server](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) 
-2. Whitelist intrinsic function tags - paste preferences below into your User Settings (Ctrl + ,) 
+1. Create new YAML document
+2. type **start** to populate new template
+3. **Start typing** desired **resource name** and hit ```tab``` key
+
+> **Note:** YAML support is dependent on YAML Language Server.
+By default,  YAML Language Server (Red Hat YAML recommended) will be installed automatically as prerequisite. 
+
+> **Note:** If you do not want to install YAML Language Server, install version **cform-noyaml.vsix** from GitHub [here](). 
+
+YAML setup
+------------------
+
+After installation, open your User Settings ```(Ctrl + ,)``` and paste preferences below into your settings file. 
+
+> **Note:** This will whitelist CloudFormation intrinsic functions tags. Otherwise you will end up with *Unknown Tag* showing up in your YAML document.
 
 ```json
     // Custom tags for the parser to use
@@ -64,20 +76,23 @@ Known issues
 When working with YAML documents, your current YAML language interpreter might not support syntax of AWS intrinsic functions, thus marking them as *unknown tag*. 
 This however has no effect on validity of the YAML document. 
 
-> **Note:** You can solve this issue by whitelisting specific tags following instructions under section **YAML Templates**. 
+> **Note:** You can solve this issue by whitelisting specific tags following instructions under section **YAML Setup**. 
 
 > **Note:** Tested only with Red Hat YAML Language Server
 
 ![YAML known issue](https://raw.githubusercontent.com/aws-scripting-guy/cform-VSCode/master/assets/known_issue1.png)
 
-Contributing
+Contributions
 -------------------
+Contributions: 
 
 1. Fork
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
+
+Feedback is welcome.
 
 Donations appreciated :)
 -------------------
