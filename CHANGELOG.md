@@ -1,5 +1,9 @@
 Changelog
 -------------------
+0.0.15
+* yaml - added additional snippets
+* installation - extension will now install YAML Server by default 
+
 0.0.13
 * yaml - most of the snippets translated 
 
