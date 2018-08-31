@@ -71,6 +71,9 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+
+
+
 	"codecommit-repository": {
 		"prefix": "codecommit-repository",
 		"body": "\r\n\"${1:codeCommitRepository}\": {\r\n   \"Type\": \"AWS::CodeCommit::Repository\",\r\n   \"Properties\": {\r\n      \"RepositoryDescription\": \"${2}\",\r\n      \"RepositoryName\": \"${3}\",\r\n      \"Triggers\": [ \"${4}\" ],\r\n  }\r\n}\r\n",
@@ -298,11 +301,13 @@
 	"launch-template": {
 		"prefix": "launch-template",
 		"body": [
+			"\"${1:launchTemplate\"}:{",
 			" \"Type\":\"AWS::EC2::LaunchTemplate\",",
 			"\t\"Properties\":{",
-			"\t\t\"LaunchTemplateName\" : ${1:\"--\"},",
-			"\t\t\"LaunchTemplateData\" : ${2:\"--\"}",
-			"\t}"
+			"\t\t\"LaunchTemplateName\" : ${2:\"--\"},",
+			"\t\t\"LaunchTemplateData\" : ${3:\"--\"}",
+			"\t}",
+			"}"
 		]
 	},
 	"logs-loggroup": {
