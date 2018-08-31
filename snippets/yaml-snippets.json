@@ -1,4 +1,5 @@
 {
+	
 	"autoscaling-group-vpc": {
 		"prefix": "autoscaling-group-vpc",
 		"body": [
@@ -109,6 +110,59 @@
 			"    InsufficientDataActions: ${13}",
 			"    OKActions: ${14}",
 			"    Unit: ${15}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"cloudwatch-events-eventrule": {
+		"prefix": "cloudwatch-events-eventrule",
+		"body": [
+			"${1:eventRule}:",
+			"  Type: AWS::Events::Rule",
+			"  Properties:",
+			"    Description: ${2}",
+			"    EventPattern:",
+			"      source:",
+			"        - ${3:\"\"} # Example: \"aws.ec2\"",
+			"      detail-type:",
+			"        - ${4:\"\"} # Example: \"EC2 Instance State-change Notification\"",
+			"      detail:",
+			"        state:",
+			"          - ${5:\"\"} # Example: \"stopping\"",
+			"    State: ${6} # Example: \"ENABLED\"}",
+			"    Targets:",
+			"    - ",
+			"      Arn: ${7}",
+			"      Id: ${8}",
+			"      RoleArn: ${9}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
+	"cloudwatch-events-scheduledrule": {
+		"prefix": "cloudwatch-events-scheduledrule",
+		"body": [
+			"${1:scheduledRule}:",
+			"  Type: AWS::Events::Rule",
+			"  Properties:",
+			"    Description: ${2}",
+			"    ScheduleExpression: \"rate(10 minutes)\"",
+			"    State: ${6} \"ENABLED\"",
+			"    Targets:",
+			"    - ",
+			"      Arn: ${7}",
+			"      Id: ${8}",
+			"      RoleArn: ${9}",
+			"${10:permissionForEventsToInvokeLambda}:",
+			"  Type: AWS::Lambda::Permission",
+			"  Properties:",
+			"    FunctionName: ${11}",
+			"    Action: ${12} # Example: \"lambda:InvokeFunction\"",
+			"    Principal: ${13} # Example: \"events.amazonaws.com\"",
+			"    SourceArn: ${14}",
+			"      Fn::GetAtt:",
+			"        - \"scheduledRule\"",
+			"        - \"Arn\""
 		],
 		"description": "",
 		"scope": "source.cloudformation"
