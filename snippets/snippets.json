@@ -71,9 +71,46 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
-
-
-
+	"cloudwatch-events-eventrule": {
+		"prefix": "cloudwatch-events-eventrule",
+		"body": [
+			"\"${1:eventRule}\": {",
+			" \"Type\":\"AWS::Events::Rule\",",
+			"\t\"Properties\":{",
+			"\t\t\"Description\" : \"${2:--}\",",
+			"\t\t\"EventPattern\":{",
+			"\t\t\t\"source\": [",
+			"\t\t\t\t\"${3:aws.ec2}\"",
+			"\t\t\t],",
+			"\t\t\t\"detail-type\": [",
+			"\t\t\t\t\"${4:EC2 Instance State-change Notification}\"",
+			"\t\t\t],",
+			"\t\t\t\"detail\": {",
+			"\t\t\t\t\"state\": [",
+			"\t\t\t\t\t\"${5:stopping}\"",
+			"\t\t\t\t]",
+			"\t\t\t},",
+			"\t\t\"State\": \"ENABLED\",",
+			"\t\t\"Targets\": [{",
+			"\t\t\t\t\"Arn\": \"${6:--}\",",
+			"\t\t\t\t\"Id\": \"${7:--}\"",
+			"\t\t }]",
+			"\t\t}",
+			"\t}",
+			"},",
+			"\"${8:permissionForEventsToInvokeLambda}\": {",
+			"\t\"Type\": \"AWS::Lambda::Permission\",",
+			"\t\"Properties\": {",
+			"\t\t\"FunctionName\": \"${9:--}\",",
+			"\t\t\"Action\": \"${10:lambda:InvokeFunction}\",",
+			"\t\t\"Principal\": \"${11:events.amazonaws.com}\",",
+			"\t\t\"SourceArn\": ${12:{ \"Fn::GetAtt\": [\"eventRule\", \"Arn\"] }}",
+			"\t}",
+			"}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"codecommit-repository": {
 		"prefix": "codecommit-repository",
 		"body": "\r\n\"${1:codeCommitRepository}\": {\r\n   \"Type\": \"AWS::CodeCommit::Repository\",\r\n   \"Properties\": {\r\n      \"RepositoryDescription\": \"${2}\",\r\n      \"RepositoryName\": \"${3}\",\r\n      \"Triggers\": [ \"${4}\" ],\r\n  }\r\n}\r\n",
