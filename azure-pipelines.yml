@@ -26,4 +26,4 @@ steps:
       - develop
       - release/*
       exclude:
-    -   master
+      - master
