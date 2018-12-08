@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+pool:
+  name: Windows
+  vmImage: 'vs2017-win2016'
+
+steps:
+- script: vsce package
+  displayName: 'Package the extension'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+- trigger:
+    - develop
+    - release/*
+
+- pr:
+    branches:
+      include:
+      - develop
+      - release/*
+      exclude:
+    -   master
