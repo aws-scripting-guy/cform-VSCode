@@ -1215,7 +1215,7 @@
 			"  Type: AWS::S3::Bucket",
 			"  Properties: ",
 			"    AccessControl: ${2:Private | PublicRead | PublicReadWrite | AuthenticatedRead | LogDeliveryWrite | BucketOwnerRead | BucketOwnerFullControl}",
-			"    Bucketname: ${3}",
+			"    BucketName: ${3}",
 			"    CorsConfiguration: ${4}",
 			"    LifecycleConfiguration: ${5}",
 			"    NotificationConfiguration: ${6}",
