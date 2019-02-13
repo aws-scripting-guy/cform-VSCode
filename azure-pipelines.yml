@@ -50,8 +50,8 @@ steps:
 - powershell: |
     git status
     git show
-    git checkout master
-  displayName: "git checkout releases/azure-pipelines"
+    git checkout release/azure-pipelines
+  displayName: "git checkout release/azure-pipelines"
 
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
