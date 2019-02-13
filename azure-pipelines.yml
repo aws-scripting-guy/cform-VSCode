@@ -3,27 +3,83 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+trigger:
+- master
+
 pool:
-  name: Windows
   vmImage: 'vs2017-win2016'
 
+variables:
+  update_type: patch
+  group: build_vars
+  system.debug: true
+
 steps:
-- script: vsce package
-  displayName: 'Package the extension'
+- checkout: self
+  persistCredentials: true
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: true
 
-- trigger:
-    - develop
-    - release/*
+- powershell: |
+   Write-Host "vsce setup"
+   npm install vsce -g 
+  displayName: 'install vsce'
 
-- pr:
-    branches:
-      include:
-      - develop
-      - release/*
-      exclude:
-      - master
+- powershell: |
+    npm config set package-lock false
+  displayName: 'npm disable package lock'
+
+- powershell: |
+    if ((test-path .\package-lock.json) -eq "True") {rm package-lock.json -force} else {}
+  displayName: "remove package lock if present"
+
+- powershell: |
+    (Get-Content -Raw .\snippets\snippets.json | ConvertFrom-Json)
+    (Get-Content -Raw .\snippets\yaml-snippets.json | ConvertFrom-Json)
+  displayName: "validate extension JSON schema"
+
+- powershell: |
+    Write-Host "setting up git properties for npm version"
+    git config --global user.email "you@example.com"
+    git config --global user.name "AWS Scripting Guy from Azure DevOps"
+  displayName: "set up git properties"
+
+- powershell: |
+    git status
+    git show
+    git checkout master
+  displayName: "git checkout releases/azure-pipelines"
+
+- powershell: |
+   Write-Host "npm version $(UPDATE_TYPE)"
+   npm version
+   npm version $(UPDATE_TYPE) -m "***NO_CI*** %s"
+  displayName: 'update version field in package.json'
+
+- powershell: |
+   Write-Host "vsce package"
+   vsce package   
+  displayName: 'package into .vsix'
+
+- powershell: |
+    git status
+    git show
+#    git push 
+  displayName: "push updated package.json to remote git"
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to Artifact Directory)'
+  inputs:
+    Contents: |
+     **\*.vsix
+     **\package.json
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: MyBuildOutputs
