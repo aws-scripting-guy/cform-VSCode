@@ -56,7 +56,7 @@ steps:
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
    npm version
-   npm version $(UPDATE_TYPE) -m "***NO_CI*** %s" -f
+   npm version $(UPDATE_TYPE) -m "***NO_CI***" -f
   displayName: 'update version field in package.json'
 
 - powershell: |
@@ -67,6 +67,7 @@ steps:
 - powershell: |
     git status
     git show
+    git log --oneline
     git push 
   displayName: "push updated package.json to remote git"
 
