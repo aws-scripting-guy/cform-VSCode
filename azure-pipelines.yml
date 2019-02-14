@@ -1,0 +1,85 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'vs2017-win2016'
+
+variables:
+  update_type: patch
+  group: build_vars
+  system.debug: true
+
+steps:
+- checkout: self
+  persistCredentials: true
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: true
+
+- powershell: |
+   Write-Host "vsce setup"
+   npm install vsce -g 
+  displayName: 'install vsce'
+
+- powershell: |
+    npm config set package-lock false
+  displayName: 'npm disable package lock'
+
+- powershell: |
+    if ((test-path .\package-lock.json) -eq "True") {rm package-lock.json -force} else {}
+  displayName: "remove package lock if present"
+
+- powershell: |
+    (Get-Content -Raw .\snippets\snippets.json | ConvertFrom-Json)
+    (Get-Content -Raw .\snippets\yaml-snippets.json | ConvertFrom-Json)
+  displayName: "validate extension JSON schema"
+
+- powershell: |
+    Write-Host "setting up git properties for npm version"
+    git config --global user.email "you@example.com"
+    git config --global user.name "AWS Scripting Guy from Azure DevOps"
+  displayName: "set up git properties"
+
+- powershell: |
+    git status
+    git show
+    git checkout release/azure-pipelines
+  displayName: "git checkout release/azure-pipelines"
+
+- powershell: |
+   Write-Host "npm version $(UPDATE_TYPE)"
+   npm version
+   npm version $(UPDATE_TYPE) -m "***NO_CI*** %s"
+  displayName: 'update version field in package.json'
+
+- powershell: |
+   Write-Host "vsce package"
+   vsce package   
+  displayName: 'package into .vsix'
+
+- powershell: |
+    git status
+    git show
+#    git push 
+  displayName: "push updated package.json to remote git"
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to Artifact Directory)'
+  inputs:
+    Contents: |
+     **\*.vsix
+     **\package.json
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: MyBuildOutputs
