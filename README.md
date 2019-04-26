@@ -57,7 +57,7 @@ After installation, open your User Settings ```(Ctrl + ,)``` and paste preferenc
         "!ImportValue",
         "!Select",
         "!Split",
-        "!Join"
+        "!Join sequence"
     ],
     // Enable/disable default YAML formatter (requires restart)
     "yaml.format.enable": true,
