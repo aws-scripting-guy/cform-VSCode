@@ -221,7 +221,7 @@
 			"    Monitoring: ${6:true|false}",
 			"    SecurityGroupIds:",
 			"      - ${7:sg-id}",
-			"    Userdata: !Base64 |",
+			"    UserData: !Base64 |",
 			"      #!/bin/bash -ex",
 			"      # put your script here",
 			"    Tags:",
