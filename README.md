@@ -59,7 +59,7 @@ After installation, open your User Settings ```(Ctrl + ,)``` and paste preferenc
         "!Not",
         "!Equals",
         "!Or",
-        "!FindInMap",
+        "!FindInMap sequence",
         "!Base64",
         "!Cidr",
         "!Ref",
@@ -68,8 +68,9 @@ After installation, open your User Settings ```(Ctrl + ,)``` and paste preferenc
         "!GetAZs",
         "!ImportValue",
         "!Select",
+        "!Select sequence",
         "!Split",
-        "!Join"
+        "!Join sequence"
     ],
     // Enable/disable default YAML formatter (requires restart)
     "yaml.format.enable": true,
