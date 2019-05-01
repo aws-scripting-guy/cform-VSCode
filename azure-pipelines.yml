@@ -56,7 +56,7 @@ steps:
 - powershell: |
    Write-Host "npm version $(UPDATE_TYPE)"
    npm version
-   npm version $(UPDATE_TYPE) -m "***NO_CI***" -f
+   npm version $(UPDATE_TYPE) -m "***NO_CI*** %s" -f
   displayName: 'update version field in package.json'
 
 - powershell: |
@@ -74,7 +74,7 @@ steps:
   displayName: 'Copy Files to Artifact Directory)'
   inputs:
     Contents: |
-     **\*.vsix
+     **\*.vsix!
      **\package.json
      **\images\ManagementTools_CloudFormation.png
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
