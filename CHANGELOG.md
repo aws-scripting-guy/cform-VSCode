@@ -1,5 +1,9 @@
 Changelog
 -------------------
+0.0.21
+* CI/CD - Azure DevOps integration for faster update cycle ongoing from May 2019
+* yaml - merged new snippets and fixes
+
 0.0.15
 * yaml - added additional snippets
 * yaml - added instructions how to whitelist intrinsic functions 

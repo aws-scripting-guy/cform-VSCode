@@ -3,6 +3,17 @@ CloudFormation support for Visual Studio Code
 
 This is a fork of [ST3 CloudFormation plugin](https://github.com/beaknit/cform).
 
+News
+-------------
+Introducing two release channels:
+1. Stable for scheduled update cycle 
+2. Nightly for fast updates based on community commits 
+
+You can find both under section **Releases** on Github: 
+
+[https://github.com/aws-scripting-guy/cform-VSCode/releases](https://github.com/aws-scripting-guy/cform-VSCode/releases)
+
+Only Stable channel is being published to VS Code marketplace. Nightly build needs to be installed manually from .vsix file. 
 
 Usage
 -------------
@@ -67,8 +78,8 @@ Troubleshooting
 -------------------
 
 * Users behing proxy: 
-Download  **cform-latest.vsix** file from GitHub repo for manual install
-[https://github.com/aws-scripting-guy/cform-VSCode](https://github.com/aws-scripting-guy/cform-VSCode)
+Download latest version of .vsix file under Releases from GitHub repo for manual install
+[https://github.com/aws-scripting-guy/cform-VSCode/releases](https://github.com/aws-scripting-guy/cform-VSCode/releases)
 
 Known issues
 -------------------
@@ -94,8 +105,10 @@ Contributions:
 
 Your feedback is welcome on GitHub.
 
-Donations appreciated :)
+Donations
 -------------------
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5DE3L7KRM6RB8&lc=US&item_name=AWS%20Scripting%20Guy&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted) [![Join the chat at https://gitter.im/cform-VSCode/Lobby](https://badges.gitter.im/cform-VSCode/Lobby.svg)](https://gitter.im/cform-VSCode/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Paypal
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5DE3L7KRM6RB8&lc=US&item_name=AWS%20Scripting%20Guy&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
 
