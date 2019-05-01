@@ -74,7 +74,7 @@ steps:
   displayName: 'Copy Files to Artifact Directory)'
   inputs:
     Contents: |
-     **\*.vsix!
+     **\*.vsix
      **\package.json
      **\images\ManagementTools_CloudFormation.png
     TargetFolder: '$(Build.ArtifactStagingDirectory)'

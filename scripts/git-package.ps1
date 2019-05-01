@@ -2,7 +2,7 @@
 
 write-host "[info] Build reason is: $env:BUILD_REASON "
 
-if ($env:BUILD_REASON -eq "Schedule") {
+if ($env:BUILD_REASON -eq "Schedule" -or $env:BUILD_REASON -eq "Manual") {
   # write package.json back to repo 
   git show
   git log --oneline
