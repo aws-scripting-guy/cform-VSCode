@@ -1,5 +1,6 @@
 CloudFormation support for Visual Studio Code 
 ===================
+[![Build Status](https://dev.azure.com/aws-scripting-guy/cform-VSCode/_apis/build/status/cform-VSCode-CI?branchName=master)](https://dev.azure.com/aws-scripting-guy/cform-VSCode/_build/latest?definitionId=6&branchName=master)
 
 This is a fork of [ST3 CloudFormation plugin](https://github.com/beaknit/cform).
 
