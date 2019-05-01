@@ -432,7 +432,7 @@
 			"${4:AttachGateway}:",
 			"  Type: AWS::EC2::VPCGatewayAttachment",
 			"  Properties:",
-			"    VpcId: ${4:vpc-id}",
+			"    VpcId: ${5:vpc-id}",
 			"    InternetGatewayId: !Ref ${1:igwName}"
 		],
 		"description": "",
