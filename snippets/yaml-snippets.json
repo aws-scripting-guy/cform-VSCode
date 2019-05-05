@@ -1298,6 +1298,23 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"sns-subscription": {
+		"prefix": "sns-subscription",
+		"body": [
+			"${1:sns-subscription}:",
+			"  Type: AWS::SNS::Subscription",
+			"  Properties:",
+			"    TopicArn: 'arn:aws:sns:[Region]:[AccountID]:[TopicName]'",
+			"    Protocol: http | https | email | email-json | sms | sqs | application | lambda",
+			"    Endpoint: ",
+			"    Region: ",
+			"    DeliveryPolicy: ",
+			"    FilterPolicy: ",
+			"    RawMessageDelivery: "
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"sns-topic": {
 		"prefix": "sns-topic",
 		"body": [
