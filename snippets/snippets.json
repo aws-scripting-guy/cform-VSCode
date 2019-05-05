@@ -689,6 +689,12 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"sns-subscription": {
+		"prefix": "sns-subscription",
+		"body": "\r\n${$1:sns-subscription}: {\r\n    \"Type\": \"AWS::SNS::Subscription\",\r\n    \"Properties\": {\r\n        \"TopicArn\": \"arn:aws:sns:[Region]:[AccountID]:[TopicName]\",\r\n        \"Protocol\": \"http | https | email | email-json | sms | sqs | application | lambda\",\r\n        \"Endpoint\": \"\",\r\n        \"Region\": \"\",\r\n        \"DeliveryPolicy\": \"\",\r\n        \"FilterPolicy\": \"\",\r\n        \"RawMessageDelivery\": \"\"\r\n    }\r\n}\r\n\r\n",
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"sns-topic": {
 		"prefix": "sns-topic",
 		"body": "\r\n\"${1:snsTopic}\": {\r\n  \"Type\": \"AWS::SNS::Topic\",\r\n  \"Properties\": {\r\n    \"DisplayName\": \"${2}\",\r\n    \"Subscription\": [ ${3} ],\r\n    \"TopicName\": \"${4}\"\r\n  }\r\n}\r\n",
