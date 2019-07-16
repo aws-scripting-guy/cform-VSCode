@@ -54,11 +54,11 @@ After installation, open your User Settings ```(Ctrl + ,)``` and paste preferenc
 ```json
     // Custom tags for the parser to use
     "yaml.customTags": [
-        "!And",
-        "!If",
-        "!Not",
-        "!Equals",
-        "!Or",
+        "!And sequence",
+        "!If sequence",
+        "!Not sequence",
+        "!Equals sequence",
+        "!Or sequence",
         "!FindInMap sequence",
         "!Base64",
         "!Cidr",
