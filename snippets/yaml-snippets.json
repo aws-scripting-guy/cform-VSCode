@@ -375,14 +375,14 @@
 			"    AssumeRolePolicyDocument: ",
 			"    Policies:",
 			"      - ",
-			"       PolicyName: \"root\"",
-			"       PolicyDocument:",
-			"         Version: \"2012-10-17\"",
-			"         Statement:",
-			"            - ",
-			"              Effect: \"Allow\"",
-			"              Action: \"*\"",
-			"              Resource: \"*\""
+			"        PolicyName: \"root\"",
+			"        PolicyDocument:",
+			"          Version: \"2012-10-17\"",
+			"          Statement:",
+			"             - ",
+			"               Effect: \"Allow\"",
+			"               Action: \"*\"",
+			"               Resource: \"*\""
 		],
 		"description": "",
 		"scope": "source.cloudformation"
