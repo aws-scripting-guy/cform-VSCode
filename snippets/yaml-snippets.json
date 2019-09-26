@@ -1,5 +1,19 @@
 {
-	
+	"autoscaling-group-scheduledaction": {
+		"prefix": "autoscaling-group-scheduledaction",
+		"body": [
+			"${1:myAutoscalingGroup}: ",
+			"  Type: AWS::AutoScaling::AutoScalingGroup",
+			"  Properties:",
+			"    AutoScalingGroupName: ${2:asg}",
+			"    MaxSize: ${3:1}",
+			"    MinSize: ${4:0}",
+			"    DesiredCapacity: ${5:1}",
+			"    Recurrence: ${6}"
+		],
+		"description": "Specifies a scheduled scaling action for an Amazon EC2 Auto Scaling group, changing the number of servers available for your application in response to predictable load changes.",
+		"scope": "source.cloudformation"
+	},
 	"autoscaling-group-vpc": {
 		"prefix": "autoscaling-group-vpc",
 		"body": [
