@@ -655,7 +655,7 @@
 	},
 	"s3-bucket": {
 		"prefix": "s3-bucket",
-		"body": "\r\n\"${1:s3Bucket}\": {\r\n\t\"Type\": \"AWS::S3::Bucket\",\r\n\t\"Properties\": {\r\n\t\t\"AccessControl\": \"${2:Private | PublicRead | PublicReadWrite | AuthenticatedRead | LogDeliveryWrite | BucketOwnerRead | BucketOwnerFullControl}\",\r\n\t\t\"BucketName\": \"${3}\",\r\n\t\t\"CorsConfiguration\": {${4}},\r\n\t\t\"LifecycleConfiguration\": {${5}},\r\n\t\t\"NotificationConfiguration\": {${6}},\r\n\t\t\"VersioningConfiguration\": {${7}},\r\n\t\t\"WebsiteConfiguration\": {${8}},\r\n\t\t\"Tags\": [${9}] \r\n\t}\r\n}\r\n",
+		"body": "\r\n\"${1:s3Bucket}\": {\r\n\t\"Type\": \"AWS::S3::Bucket\",\r\n\t\"Properties\": {\r\n\t\t\"AccelerateConfiguration\": {${1}},\r\n\t\t\"AccessControl\": \"${2:Private | PublicRead | PublicReadWrite | AuthenticatedRead | LogDeliveryWrite | BucketOwnerRead | BucketOwnerFullControl}\",\r\n\t\t\"AnalyticsConfigurations\": [${3}],\r\n\t\t\"BucketEncryption\": {${4}},\r\n\t\t\"BucketName\": \"${5}\",\r\n\t\t\"CorsConfiguration\": {${6}},\r\n\t\t\"InventoryConfigurations\": [${7}],\r\n\t\t\"LifecycleConfiguration\": {${8}},\r\n\t\t\"LoggingConfiguration\": {${9}},\r\n\t\t\"MetricsConfigurations\": [${10}],\r\n\t\t\"NotificationConfiguration\": {${11}},\r\n\t\t\"ObjectLockConfiguration\": {${12}},\r\n\t\t\"ObjectLockEnabled\": ${13},\r\n\t\t\"PublicAccessBlockConfiguration\": {${14}},\r\n\t\t\"ReplicationConfiguration\": {${15}},\r\n\t\t\"VersioningConfiguration\": {${16}},\r\n\t\t\"WebsiteConfiguration\": {${17}},\r\n\t\t\"Tags\": [${18}] \r\n\t}\r\n}\r\n",
 		"description": "",
 		"scope": "source.cloudformation"
 	},
