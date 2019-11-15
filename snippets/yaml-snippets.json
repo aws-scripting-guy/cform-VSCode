@@ -607,6 +607,22 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"nat-gateway": {
+		"prefix": "nat-gateway",
+		"body": [
+		"${1:ngwName}:",
+			"  Type: AWS::EC2::NatGateway",
+			"  Properties:",
+			"    AllocationId: ${2:eip-id}",
+			"    SubnetId: ${3:subnet-id}",
+			"    Tags:",
+			"      - Key: ${4:keyname}",
+			"        Value: ${5:value}"
+		],
+		"description": "",
+		"scope": "source.cloudformation"
+
+	},
 	"rds-dbinstance": {
 		"prefix": "rds-dbinstance",
 		"body": [

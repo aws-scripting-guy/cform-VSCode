@@ -377,6 +377,12 @@
 		"description": "",
 		"scope": "source.cloudformation"
 	},
+	"nat-gateway": {
+		"prefix": "nat-gateway",
+		"body": "\r\n\"${1:ngwName}\": {\r\n  \"Type\" : \"AWS::EC2::NatGateway\",\r\n  \"Properties\" : {\r\n      \"AllocationId\" : ${1:eip-id},\r\n      \"SubnetId\" : ${2:subnet-id},\r\n      \"Tags\" : [${3:\"-\"}]\r\n    }\r\n}\r\n",
+		"description": "",
+		"scope": "source.cloudformation"
+	},
 	"opsworks-app": {
 		"prefix": "opsworks-app",
 		"body": "\r\n\"${1:opsworksApp}\": {\r\n  \"Type\": \"AWS::OpsWorks::App\",\r\n  \"Properties\": {\r\n  \t\"Name\": \"${2}\",\r\n    \"StackId\": \"${3}\",\r\n    \"Type\": \"${4}\",\r\n    \"AppSource\": { ${5} },\r\n    \"Attributes\": { ${6}:${7} },\r\n    \"Description\": \"${8}\",\r\n    \"Domains\":  [ \"${9}\" ],\r\n    \"EnableSsl\": \"${10:true | false}\",\r\n    \"Shortname\": \"${11}\",\r\n    \"SslConfiguration\": { ${12} }\r\n  }\r\n}\r\n",
