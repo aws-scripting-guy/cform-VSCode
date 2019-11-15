@@ -1,4 +1,10 @@
 {
+	"autoscaling-group-scheduledaction": {
+		"prefix": "autoscaling-group-scheduledaction",
+		"body": "\r\n\"${1:-}\" : {\r\n    \"Type\" : \"AWS::AutoScaling::ScheduledAction\",\r\n    \"Properties\" : {\r\n        \"AutoScalingGroupName\" : \"${2}\",\r\n        \"MaxSize\" : ${3:1},\r\n        \"MinSize\" : ${4:0},\r\n        \"DesiredCapacity\" : ${5:1},\r\n        \"Recurrence\" : \"${6}\"}\r\n}\r\n",
+		"description": "Specifies a scheduled scaling action for an Amazon EC2 Auto Scaling group, changing the number of servers available for your application in response to predictable load changes.",
+		"scope": "source.cloudformation"
+	},
 	"autoscaling-group-vpc": {
 		"prefix": "autoscaling-group-vpc",
 		"body": "\r\n\"${1:-}\" : {\r\n    \"Type\" : \"AWS::AutoScaling::AutoScalingGroup\",\r\n    \"Properties\" : {\r\n        \"AvailabilityZones\" : [\r\n            ${2:azs}\r\n        ],\r\n        \"LaunchConfigurationName\" : ${3:\"-\"},\r\n        \"MaxSize\" : \"${4:-}\",\r\n        \"MinSize\" : \"${5:-}\",\r\n        \"VPCZoneIdentifier\" :  [ ${6:list of subnet ids} ],\r\n        \"Tags\" : [ {\"Key\" : \"Name\",\r\n                    \"Value\" : \"${7:-}\",\r\n                    \"PropagateAtLaunch\" : \"True\"} \r\n                ]\r\n    }\r\n}\r\n",
