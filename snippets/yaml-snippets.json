@@ -271,8 +271,8 @@
 			"${1:eipName}:",
 			"  Type: AWS::EC2::EIP",
 			"  Properties:",
-			"  Domain: vpc",
-			"  InstanceId: ${2:instance-id}"
+			"    Domain: vpc",
+			"    InstanceId: ${2:instance-id}"
 		],
 		"description": "",
 		"scope": "source.cloudformation"
