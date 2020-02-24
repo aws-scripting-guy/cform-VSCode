@@ -480,7 +480,7 @@
 			"    KmsKeyArn: ${5}",
 			"    MemorySize: ${6:128}",
 			"    Role: ${7:role-arn}",
-			"    Runtime: ${8:nodejs | nodejs4.3 | nodejs6.10 | nodejs8.10 | java8 | python2.7 | python3.6 | dotnetcore1.0 | dotnetcore2.0 | dotnetcore2.1 | nodejs4.3-edge | go1.x}",
+			"    Runtime: ${8:dotnetcore2.1 | go1.x | java11 | java8 | nodejs10.x | nodejs12.x | provided | python2.7 | python3.6 | python3.7 | python3.8 | ruby2.5 | ruby2.7}",
 			"    Timeout: ${9}",
 			"    VpcConfig:",
 			"      SecurityGroupIds:",
