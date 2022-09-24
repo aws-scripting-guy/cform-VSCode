@@ -47,7 +47,7 @@ By default,  YAML Language Server (Red Hat YAML recommended) will be installed a
 YAML setup
 ------------------
 
-After installation, open your User Settings ```(Ctrl + ,)``` and paste preferences below into your settings file. 
+After installation, open your User Settings ```(Ctrl + ,)```, search for "YAML", open "settings.json" and paste preferences below into your settings file. 
 
 > **Note:** This will whitelist CloudFormation intrinsic functions tags. Otherwise you will end up with *Unknown Tag* showing up in your YAML document.
 
